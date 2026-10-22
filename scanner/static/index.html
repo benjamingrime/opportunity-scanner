@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Opportunity Scanner</title>
+<style>
+:root {
+  --bg: #fafaf8; --panel: #ffffff; --text: #1d1d1b; --muted: #6b6b66; --line: #e4e3de;
+  --e1: #2f8f5b; --e2: #3a6fb0; --e0: #b9b8b1; --warn: #9a6400; --focus: #3a6fb0;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #161615; --panel: #1f1f1d; --text: #ecebe6; --muted: #a3a29b; --line: #34332f;
+          --e1: #4fb37c; --e2: #6a9be0; --e0: #5c5b55; --warn: #e0a440; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text);
+       font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+main { max-width: 1100px; margin: 0 auto; padding: 24px 16px 48px; }
+h1 { font-size: 24px; margin: 0 0 4px; }
+h2 { font-size: 16px; margin: 0 0 12px; }
+p.lead { margin: 0 0 20px; color: var(--muted); }
+.grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 16px; align-items: start; }
+@media (max-width: 860px) { .grid { grid-template-columns: 1fr; } }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 16px; }
+label { display: block; font-size: 13px; color: var(--muted); margin-bottom: 4px; }
+select, input { font: inherit; color: inherit; background: var(--bg); border: 1px solid var(--line);
+                border-radius: 6px; padding: 6px 8px; width: 100%; }
+select:focus, input:focus, button:focus-visible { outline: 2px solid var(--focus); outline-offset: 1px; }
+.controls { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
+.controls > :first-child { grid-column: 1 / -1; }
+.seg { display: flex; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+.seg button { flex: 1; border: 0; background: var(--bg); color: var(--muted); padding: 6px; font: inherit; cursor: pointer; }
+.seg button.on { background: var(--text); color: var(--bg); }
+.note { font-size: 13px; color: var(--muted); margin: 6px 0 10px; }
+.note.warn { color: var(--warn); }
+table { width: 100%; border-collapse: collapse; }
+td { padding: 4px 0; border-bottom: 1px solid var(--line); vertical-align: middle; }
+td.val { width: 80px; padding-left: 8px; }
+td.val input { text-align: right; padding: 3px 6px; }
+td.x { width: 28px; text-align: right; }
+button.link { border: 0; background: none; color: var(--muted); cursor: pointer; font: inherit; padding: 2px 6px; }
+button.link:hover { color: var(--text); }
+.occ { cursor: pointer; }
+.occ:hover { text-decoration: underline; }
+.search { position: relative; margin-top: 12px; }
+.results { position: absolute; z-index: 5; left: 0; right: 0; background: var(--panel); border: 1px solid var(--line);
+           border-radius: 6px; margin-top: 2px; max-height: 260px; overflow: auto; }
+.results div { padding: 6px 8px; cursor: pointer; }
+.results div:hover, .results div.active { background: var(--bg); }
+.results small { color: var(--muted); display: block; }
+.row-actions { display: flex; justify-content: space-between; margin-top: 8px; font-size: 13px; }
+.bar { display: flex; height: 26px; border-radius: 5px; overflow: hidden; background: var(--line); }
+.bar span { display: block; height: 100%; }
+.mini { height: 8px; border-radius: 3px; margin-top: 3px; }
+.e1 { background: var(--e1); } .e2 { background: var(--e2); } .e0 { background: var(--e0); }
+.legend { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 10px 0 4px; }
+.legend div { font-size: 13px; color: var(--muted); }
+.legend b { display: block; font-size: 22px; color: var(--text); }
+.legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; }
+.lists { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
+@media (max-width: 520px) { .lists { grid-template-columns: 1fr; } }
+.lists ol { margin: 0; padding-left: 20px; }
+.lists li { margin-bottom: 6px; }
+.lists small { color: var(--muted); display: block; }
+.tasks h3 { font-size: 14px; margin: 14px 0 6px; }
+.tasks ul { margin: 0; padding-left: 18px; }
+.tasks li { margin-bottom: 4px; }
+.tasks small { color: var(--muted); }
+footer { margin-top: 24px; font-size: 13px; color: var(--muted); }
+footer p { margin: 0 0 6px; }
+.section { margin-top: 16px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Opportunity Scanner</h1>
+  <p class="lead">Where could AI save time in your organisation? Start from a typical firm in your industry, then change the roles to match yours. Exploratory, not a forecast.</p>
+
+  <div class="grid">
+    <section class="panel" aria-labelledby="ws">
+      <h2 id="ws">Your workforce</h2>
+      <div class="controls">
+        <div><label for="industry">Industry (SIC 2007)</label><select id="industry"></select></div>
+        <div><label for="headcount">Headcount</label><input id="headcount" type="number" min="1" value="200"></div>
+        <div><label>Enter roles as</label>
+          <div class="seg" role="group" aria-label="Enter roles as">
+            <button id="m-percent" class="on" type="button">%</button>
+            <button id="m-count" type="button">People</button>
+          </div></div>
+      </div>
+      <div id="mixnote" class="note"></div>
+      <table><tbody id="rows"></tbody></table>
+      <div class="row-actions"><span id="sum"></span><button class="link" id="reset" type="button">Reset to industry default</button></div>
+      <div class="search">
+        <label for="add">Add a role (search by job title)</label>
+        <input id="add" placeholder="e.g. payroll, people partner, data analyst" autocomplete="off">
+        <div class="results" id="results" hidden></div>
+      </div>
+    </section>
+
+    <section class="panel" aria-labelledby="res">
+      <h2 id="res">Where AI could help</h2>
+      <div class="bar" id="firmbar" aria-hidden="true"></div>
+      <div class="legend" id="legend"></div>
+      <p class="note">Share of all tasks across your workforce, weighting each role by headcount.</p>
+      <div class="lists">
+        <div><h2><i class="e1" style="display:inline-block;width:10px;height:10px;border-radius:2px"></i> Buy and train</h2>
+          <p class="note">An off-the-shelf AI assistant could halve the time on these roles' E1 tasks. Licences and training.</p>
+          <ol id="quick"></ol></div>
+        <div><h2><i class="e2" style="display:inline-block;width:10px;height:10px;border-radius:2px"></i> Build</h2>
+          <p class="note">E2 tasks need software or an agent connected to your systems. A project.</p>
+          <ol id="build"></ol></div>
+      </div>
+      <div class="section tasks" id="tasks"></div>
+    </section>
+  </div>
+
+  <footer>
+    <p><b>How to read this.</b> Each role is mapped to O*NET occupations, whose tasks are labelled with the "GPTs are GPTs" exposure rubric: <b>E1</b> an AI assistant alone could halve the time at equal quality; <b>E2</b> it would take software or an agent built on AI; <b>E0</b> neither. Shares are of tasks, not time, and say nothing about jobs lost.</p>
+    <p><b>Limits.</b> O*NET describes US jobs. Industry mixes are typical, not yours. Exposure is potential, not adoption. No check of data, systems or readiness.</p>
+    <p id="sources"></p>
+  </footer>
+</main>
+<script>
+const $ = s => document.querySelector(s);
+const state = { industry: null, mode: "percent", rows: [], headcount: 200, focus: null };
+const pct = x => x == null ? "–" : Math.round(x * 100) + "%";
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+async function api(path, body) {
+  const r = await fetch(path, body ? { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) } : {});
+  if (!r.ok) throw new Error(await r.text());
+  return r.json();
+}
+
+async function init() {
+  const [inds, meta] = await Promise.all([api("/api/industries"), api("/api/meta")]);
+  const groups = {};
+  for (const i of inds) (groups[i.section + " " + i.section_name] ||= []).push(i);
+  $("#industry").innerHTML = Object.entries(groups).map(([g, list]) =>
+    `<optgroup label="${esc(g)}">${list.map(i => `<option value="${i.code}">${i.code} ${esc(i.name)}</option>`).join("")}</optgroup>`).join("");
+  $("#industry").value = "69";
+  $("#sources").innerHTML = `Index: ${esc(meta.index)}. Industry mix: ${esc(meta.industry_source)} (Open Government Licence). O*NET 31.0 (CC BY 4.0).`;
+  await loadIndustry();
+}
+
+async function loadIndustry() {
+  const code = $("#industry").value;
+  const mix = await api(`/api/industries/${code}`);
+  state.industry = mix.industry;
+  state.mode = "percent"; setModeButtons();
+  state.rows = mix.rows.map(r => ({ soc: r.soc, title: r.title, value: r.value }));
+  const i = mix.industry;
+  const borrowed = i.mix_from !== "division";
+  $("#mixnote").className = "note" + (borrowed ? " warn" : "");
+  $("#mixnote").textContent = borrowed
+    ? `Few survey responses for this industry, so the starting roles come from its wider section (${i.section_name}). Edit them to fit.`
+    : `Starting roles: the ${mix.rows.length} most common in UK ${i.name.toLowerCase()}, ${Math.round(mix.covers * 100)}% of its ${i.workers.toLocaleString("en-GB")} workers, scaled to 100%.`;
+  renderRows(); await rescan();
+}
+
+function setModeButtons() {
+  $("#m-percent").classList.toggle("on", state.mode === "percent");
+  $("#m-count").classList.toggle("on", state.mode === "count");
+  $("#headcount").disabled = state.mode === "count";
+}
+
+function switchMode(mode) {
+  if (mode === state.mode) return;
+  const total = state.rows.reduce((a, r) => a + (+r.value || 0), 0) || 1;
+  const hc = +$("#headcount").value || 0;
+  state.rows.forEach(r => {
+    r.value = mode === "count" ? Math.round(hc * (+r.value || 0) / total) : Math.round(1000 * (+r.value || 0) / total) / 10;
+  });
+  state.mode = mode; setModeButtons(); renderRows(); rescan();
+}
+
+function renderRows() {
+  $("#rows").innerHTML = state.rows.map((r, k) => `
+    <tr><td><span class="occ" data-soc="${r.soc}">${esc(r.title)}</span></td>
+    <td class="val"><input type="number" min="0" step="any" value="${r.value}" data-k="${k}" aria-label="${esc(r.title)} ${state.mode === "percent" ? "percent" : "people"}"></td>
+    <td class="x"><button class="link" data-del="${k}" aria-label="Remove ${esc(r.title)}">×</button></td></tr>`).join("");
+  updateSum();
+}
+
+function updateSum() {
+  const total = state.rows.reduce((a, r) => a + (+r.value || 0), 0);
+  $("#sum").textContent = state.mode === "percent"
+    ? `Total ${Math.round(total * 10) / 10}%${Math.abs(total - 100) > 0.5 ? " (scaled to 100%)" : ""}`
+    : `Total ${Math.round(total)} people`;
+}
+
+let timer;
+function rescanSoon() { clearTimeout(timer); timer = setTimeout(rescan, 250); }
+
+async function rescan() {
+  const body = { rows: state.rows.map(r => ({ soc: r.soc, value: +r.value || 0 })), mode: state.mode };
+  if (state.mode === "percent") body.headcount = +$("#headcount").value || 1;
+  let res;
+  try { res = await api("/api/scan", body); } catch (e) { return; }
+  const s = res.firm.shares;
+  $("#firmbar").innerHTML = ["E1", "E2", "E0"].map(b => `<span class="${b.toLowerCase()}" style="width:${(s[b] || 0) * 100}%"></span>`).join("");
+  const names = { E1: "Buy and train", E2: "Build", E0: "People stay central" };
+  $("#legend").innerHTML = ["E1", "E2", "E0"].map(b =>
+    `<div><i class="${b.toLowerCase()}"></i>${names[b]}<b>${pct(s[b])}</b></div>`).join("");
+  const item = (q, b) => `<li><span class="occ" data-soc="${q.soc}">${esc(q.title)}</span>
+    <small>${Math.round(q.people).toLocaleString("en-GB")} ${Math.round(q.people) === 1 ? "person" : "people"} · ${pct(q.share)} of their tasks ${b}</small></li>`;
+  $("#quick").innerHTML = res.quick_wins.map(q => item(q, "E1")).join("");
+  $("#build").innerHTML = res.build_candidates.map(q => item(q, "E2")).join("");
+  if (!state.focus || !state.rows.some(r => r.soc === state.focus)) state.focus = res.quick_wins[0]?.soc;
+  if (state.focus) showTasks(state.focus);
+}
+
+async function showTasks(soc) {
+  state.focus = soc;
+  const t = await api(`/api/occupations/${soc}/tasks`);
+  const list = (b, n) => t.tasks[b].slice(0, n).map(x => `<li>${esc(x.task)}${t.onet.length > 1 ? ` <small>(${esc(x.onet)})</small>` : ""}</li>`).join("") || "<li><small>None.</small></li>";
+  const more = b => t.tasks[b].length > 8 ? `<small>…and ${t.tasks[b].length - 8} more.</small>` : "";
+  $("#tasks").innerHTML = `<h2>${esc(t.title)}: what to look at</h2>
+    <p class="note">Mapped to O*NET: ${t.onet.map(o => esc(o.title)).join(", ")}. Click any role to see its tasks.</p>
+    <h3><i class="e1" style="display:inline-block;width:10px;height:10px;border-radius:2px"></i> Buy and train (E1)</h3><ul>${list("E1", 8)}</ul>${more("E1")}
+    <h3><i class="e2" style="display:inline-block;width:10px;height:10px;border-radius:2px"></i> Build (E2)</h3><ul>${list("E2", 8)}</ul>${more("E2")}`;
+}
+
+let hits = [], active = -1;
+async function doSearch() {
+  const q = $("#add").value.trim();
+  if (q.length < 2) { $("#results").hidden = true; return; }
+  hits = await api(`/api/search?q=${encodeURIComponent(q)}`);
+  active = -1;
+  $("#results").innerHTML = hits.length ? hits.map((h, k) =>
+    `<div data-k="${k}">${esc(h.title)}${h.matched ? `<small>matches "${esc(h.matched)}"</small>` : ""}</div>`).join("") : `<div><small>No match. Try a shorter word.</small></div>`;
+  $("#results").hidden = false;
+}
+function addRow(h) {
+  if (!h) return;
+  if (!state.rows.some(r => r.soc === h.soc)) {
+    state.rows.push({ soc: h.soc, title: h.title, value: state.mode === "percent" ? 5 : 5 });
+    renderRows(); rescan();
+  }
+  $("#add").value = ""; $("#results").hidden = true;
+}
+
+$("#industry").addEventListener("change", loadIndustry);
+$("#reset").addEventListener("click", loadIndustry);
+$("#headcount").addEventListener("input", rescanSoon);
+$("#m-percent").addEventListener("click", () => switchMode("percent"));
+$("#m-count").addEventListener("click", () => switchMode("count"));
+$("#rows").addEventListener("input", e => {
+  const k = e.target.dataset.k; if (k == null) return;
+  state.rows[k].value = e.target.value; updateSum(); rescanSoon();
+});
+$("#rows").addEventListener("click", e => {
+  if (e.target.dataset.del != null) { state.rows.splice(+e.target.dataset.del, 1); renderRows(); rescan(); }
+});
+document.addEventListener("click", e => {
+  const soc = e.target.closest?.(".occ")?.dataset.soc; if (soc) showTasks(soc);
+  if (!e.target.closest(".search")) $("#results").hidden = true;
+});
+let st; $("#add").addEventListener("input", () => { clearTimeout(st); st = setTimeout(doSearch, 150); });
+$("#add").addEventListener("keydown", e => {
+  const divs = [...$("#results").querySelectorAll("div[data-k]")];
+  if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+    e.preventDefault(); active = Math.max(0, Math.min(divs.length - 1, active + (e.key === "ArrowDown" ? 1 : -1)));
+    divs.forEach((d, k) => d.classList.toggle("active", k === active));
+  } else if (e.key === "Enter") { e.preventDefault(); addRow(hits[active >= 0 ? active : 0]); }
+  else if (e.key === "Escape") $("#results").hidden = true;
+});
+$("#results").addEventListener("click", e => { const d = e.target.closest("div[data-k]"); if (d) addRow(hits[+d.dataset.k]); });
+init();
+</script>
+</body>
+</html>
