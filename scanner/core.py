@@ -4,7 +4,9 @@ Plain code, no LLM. Each occupation's tasks are split by the exposure index into
   E1 "buy and train": an off-the-shelf AI assistant could halve the time,
   E2 "build":         it needs software or an agent connected to the organisation's systems,
   E0 "leave":         AI can't halve the time; people stay central.
-Results are shares of tasks, weighted by headcount. They are not time or cost estimates.
+Results are shares of working time, weighted by headcount, and hours a week assuming full-time
+staff. Time per task is estimated (pipeline/time_shares.py). It is time spent on the tasks, not
+time AI would save, and there are no cost estimates.
 """
 import json
 import re
@@ -14,6 +16,8 @@ from pathlib import Path
 
 DATA = Path(__file__).resolve().parent / "data"
 BUCKETS = ("E1", "E2", "E0")
+HOURS_PER_WEEK = 37.5                  # UK full-time week
+TASK_HOURS = HOURS_PER_WEEK * 7 / 8    # of which on the occupation's listed tasks (the rest: breaks, meetings)
 
 
 @cache
@@ -110,12 +114,15 @@ def scan(rows, headcount=None, mode="percent"):
 
     def top(bucket, k=5):
         return [{"soc": r["soc"], "title": r["title"], "people": r["people"],
-                 "share": r["exposure"][bucket], "weight": round(r["people"] * r["exposure"][bucket], 2)}
+                 "share": r["exposure"][bucket], "hours_each": round(r["exposure"][bucket] * TASK_HOURS, 1),
+                 "hours": round(r["people"] * r["exposure"][bucket] * TASK_HOURS)}
                 for r in sorted(rated, key=lambda r: -r["people"] * r["exposure"][bucket])[:k]]
 
     return {
         "headcount": round(headcount or 0, 1),
+        "task_hours_per_week": TASK_HOURS,
         "firm": {"shares": firm,
+                 "hours": {b: round(weighted[b] * TASK_HOURS) for b in BUCKETS},
                  "beta": round(firm["E1"] + 0.5 * firm["E2"], 4) if rated_people else None,
                  "people_without_data": round(unrated_people, 1)},
         "quick_wins": top("E1"),
@@ -126,14 +133,23 @@ def scan(rows, headcount=None, mode="percent"):
 
 
 def tasks(soc):
-    """The occupation's tasks with their labels, grouped by bucket (E1 first)."""
+    """The occupation's tasks with their labels, grouped by bucket (E1 first), longest first.
+    hours: estimated hours a week for a full-time worker, or None where there's no time estimate."""
     o = occupations()[soc]
     by_code = _load("tasks")
     out = {b: [] for b in BUCKETS}
     for link in o["onet"]:
-        for t in by_code.get(link["code"], []):
+        rows = by_code.get(link["code"], [])
+        covered = sum(t["share"] or 0 for t in rows)
+        for t in rows:
             counts = Counter(t["labels"])
             label = counts.most_common(1)[0][0]
-            out[label].append({"task": t["task"], "onet": link["title"],
+            hours = None
+            if link["weighting"] == "time":
+                # each linked O*NET occupation counts equally, as in the role's shares
+                hours = round((t["share"] or 0) / covered * TASK_HOURS / len(o["onet"]), 1)
+            out[label].append({"task": t["task"], "onet": link["title"], "hours": hours,
                                "agreement": round(counts[label] / len(t["labels"]), 2)})
+    for b in BUCKETS:
+        out[b].sort(key=lambda t: -(t["hours"] or 0))
     return {"soc": soc, "title": o["title"], "onet": o["onet"], "tasks": out}

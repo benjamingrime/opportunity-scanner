@@ -1,0 +1,12 @@
+{
+  "model": "anthropic/claude-haiku-5.5",
+  "effort": "high",
+  "onet": "31.0",
+  "occupations": 911,
+  "calls": 18420,
+  "refused": 6,
+  "cost": 14.0511,
+  "prompt_tokens": 21243765,
+  "completion_tokens": 23853440,
+  "reasoning_tokens": 17101780
+}

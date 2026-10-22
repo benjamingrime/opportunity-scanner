@@ -4,7 +4,8 @@ Ben's preferences: `/Users/ben/.codex/AGENTS.md`. Plan: `/Users/ben/build/career
 
 - Run: `uv run uvicorn scanner.app:app --reload`. Test: `uv run pytest -q`. Rebuild data: `uv run python pipeline/build_data.py`.
 - The scan is plain code. Keep LLM calls out of `scanner/core.py`.
-- Never present results as time saved, money saved or jobs lost: shares of tasks only.
+- Never present results as time saved, money saved or jobs lost. Shares of working time and hours spent on tasks are fine.
+- Time per task: `pipeline/time_shares.py` (method of Hatgis-Kessell et al. 2026; credit them wherever it's described). Haiku 5.5 at high reasoning, not max (max is ~19x the cost).
 - AWS: profile `ben`, project Region `eu-north-1` (fixed; resources can't go in other Regions). Free plan, $100 credit to April 2027.
 
 <!-- BEGIN AWS Agent Toolkit rules -->
@@ -56,6 +57,7 @@ Where this guidance conflicts with the project's own instructions, the project's
 
 ### Help level
 
+- Ben's help_level: **MEDIUM** (set 22 Oct 2026).
 - help_level (required): LOW, MEDIUM, or HIGH. While a user is building, you MUST ask the user: "How much guidance would you like from me? Low (I only flag security risks), medium (I ask a couple of clarifying questions if something seems off), or high (I explain what I'm doing, suggest alternatives, and flag best practices)."
 
 You CAN update this rule file to save a user's help_level.

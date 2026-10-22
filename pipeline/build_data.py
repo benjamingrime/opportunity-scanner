@@ -2,11 +2,15 @@
 
   uv run python pipeline/build_data.py [--index eloundou-2023-human | path/to/labels/dir]
 
-Writes three JSON files to scanner/data/:
+Writes four JSON files to scanner/data/:
   industries.json   SIC 2007 divisions, each with a typical UK occupation mix (SOC 2020 4-digit)
   occupations.json  SOC 2020 4-digit occupations with exposure shares (E0/E1/E2) and O*NET links
-  tasks.json        O*NET tasks with exposure labels, keyed by O*NET code
+  tasks.json        O*NET tasks with exposure labels and share of the working day, keyed by O*NET code
   titles.json       ONS job titles -> SOC 2020 code, for adding occupations by job title
+
+Exposure shares are shares of working time: each task is weighted by its estimated share of the
+day (data/time/time_shares.csv, from pipeline/time_shares.py). An O*NET occupation whose labelled
+tasks cover less than MIN_TIME_COVERAGE of its estimated day falls back to equal task weights.
 
 The index is swappable. Until the 2026 re-rating is complete, the default is Eloundou et al.'s
 2023 human labels. A labels directory from gpts-are-gpts-2026 (one CSV per model) gives the
@@ -25,6 +29,10 @@ OUT = ROOT / "scanner" / "data"
 # Industries whose published cells cover less than this share of their workers borrow the
 # occupation mix of their SIC section (the ONS table blanks out small cells).
 MIN_COVERAGE = 0.70
+
+# The index's labelled tasks must cover at least this share of an O*NET occupation's estimated
+# working day for time weights to be used; otherwise its tasks count equally.
+MIN_TIME_COVERAGE = 0.5
 
 SECTIONS = [  # (section, first division, last division, name)
     ("A", 1, 3, "Agriculture, forestry and fishing"),
@@ -153,33 +161,48 @@ def load_labels(index):
     return tasks, f"gpts-are-gpts-2026 ({', '.join(p.stem for p in sorted(Path(index).glob('*.csv')))})"
 
 
-def shares(labels_per_task):
-    """Task-weighted shares of E0/E1/E2. A task rated by several models counts each model equally."""
-    n = len(labels_per_task)
+def load_time():
+    """{onet_code: {task_id: share of the working day}}; empty if the estimates aren't built."""
+    path = ROOT / "data" / "time" / "time_shares.csv"
+    out = defaultdict(dict)
+    if path.exists():
+        for r in csv.DictReader(open(path)):
+            out[r["onet_code"]][r["task_id"]] = float(r["share"])
+    return out
+
+
+def shares(labelled, time):
+    """Shares of E0/E1/E2 for one O*NET occupation, and the weighting used ("time" or "tasks").
+    labelled: {task_id: labels}; time: {task_id: share of the day}. A task rated by several
+    models counts each model equally."""
+    covered = sum(time.get(tid, 0) for tid in labelled)
+    weighting = "time" if covered >= MIN_TIME_COVERAGE else "tasks"
+    weight = {tid: time.get(tid, 0) / covered if weighting == "time" else 1 / len(labelled) for tid in labelled}
     s = {"E0": 0.0, "E1": 0.0, "E2": 0.0}
-    for labels in labels_per_task:
+    for tid, labels in labelled.items():
         for lab in labels:
-            s[lab] += 1 / len(labels) / n
-    return s
+            s[lab] += weight[tid] / len(labels)
+    return s, weighting
 
 
-def build_occupations(socs, tasks):
+def build_occupations(socs, tasks, time):
     crosswalk = json.load(open(RAW / "crosswalk" / "soc4_to_onet.json"))
     titles = {r["O*NET-SOC Code"]: r["Title"] for r in csv.DictReader(
         open(RAW / "onet-31.0" / "Occupation_Data.txt", encoding="utf-8-sig"), delimiter="\t")}
     occ = {}
     for soc, name in sorted(socs.items()):
         onet = [c for c in crosswalk.get(soc, []) if c in tasks]
-        per_onet = [shares([labs for _, labs in tasks[c].values()]) for c in onet]
+        per_onet = [shares({tid: labs for tid, (_, labs) in tasks[c].items()}, time[c]) for c in onet]
         if per_onet:
-            # each linked O*NET occupation counts equally, as Eloundou weight tasks equally
-            e = {k: sum(p[k] for p in per_onet) / len(per_onet) for k in ("E0", "E1", "E2")}
+            # each linked O*NET occupation counts equally
+            e = {k: sum(p[k] for p, _ in per_onet) / len(per_onet) for k in ("E0", "E1", "E2")}
             e = {k: round(v, 4) for k, v in e.items()}
             beta = round(e["E1"] + 0.5 * e["E2"], 4)
         else:
             e, beta = None, None
         occ[soc] = {"soc": soc, "title": name, "exposure": e, "beta": beta,
-                    "onet": [{"code": c, "title": titles.get(c, c)} for c in onet]}
+                    "onet": [{"code": c, "title": titles.get(c, c), "weighting": w}
+                             for c, (_, w) in zip(onet, per_onet)]}
     return occ
 
 
@@ -208,20 +231,26 @@ def main():
     divisions, socs, pooled, total = read_industry_table()
     industries = build_industries(divisions, socs, pooled, total)
     tasks, index_name = load_labels(a.index)
-    occupations = build_occupations(socs, tasks)
-    task_out = {c: [{"id": tid, "task": t, "labels": labs} for tid, (t, labs) in sorted(v.items())]
-                for c, v in tasks.items()}
+    time = load_time()
+    occupations = build_occupations(socs, tasks, time)
+    task_out = {c: [{"id": tid, "task": t, "labels": labs, "share": time[c].get(tid)}
+                    for tid, (t, labs) in sorted(v.items())] for c, v in tasks.items()}
     OUT.mkdir(parents=True, exist_ok=True)
     meta = {"index": index_name, "industry_source": "ONS ad hoc 2978, APS 2022-2024 pooled",
-            "min_coverage": MIN_COVERAGE}
+            "min_coverage": MIN_COVERAGE, "min_time_coverage": MIN_TIME_COVERAGE,
+            "time_source": "Time per task: method of Hatgis-Kessell et al. (2026), estimated with "
+                           "Claude Haiku 5.5 on O*NET 31.0"}
     for name, obj in [("industries", {"meta": meta, "industries": industries}),
                       ("occupations", {"meta": meta, "occupations": occupations}),
                       ("tasks", task_out), ("titles", build_titles(socs))]:
         (OUT / f"{name}.json").write_text(json.dumps(obj, separators=(",", ":")))
     borrowed = sum(i["mix_from"] != "division" for i in industries)
     missing = sum(o["exposure"] is None for o in occupations.values())
+    links = [l for o in occupations.values() for l in o["onet"]]
+    timed = sum(l["weighting"] == "time" for l in links)
     print(f"{len(industries)} industries ({borrowed} borrow their section's mix), "
-          f"{len(occupations)} occupations ({missing} without exposure data), index: {index_name}")
+          f"{len(occupations)} occupations ({missing} without exposure data), "
+          f"{timed}/{len(links)} O*NET links time-weighted, index: {index_name}")
 
 
 if __name__ == "__main__":

@@ -1,6 +1,11 @@
+import csv
+from collections import defaultdict
+
+import numpy as np
 import pytest
 from fastapi.testclient import TestClient
 
+from pipeline import time_shares
 from scanner import core
 from scanner.app import app
 
@@ -79,3 +84,46 @@ def test_api_round_trip():
     assert res["headcount"] == 50 and res["quick_wins"]
     assert c.get("/api/industries/00").status_code == 404
     assert c.post("/api/scan", json={"rows": [{"soc": "abc", "value": 1}]}).status_code == 422
+
+
+def test_pairs_count_only_when_both_calls_agree():
+    ids = ["t1", "t2", "t3"]
+    judg = {("t1", "t2"): "a", ("t2", "t1"): "b",      # both say t1 is longer
+            ("t1", "t3"): "a", ("t3", "t1"): "a",      # each says itself: contradiction
+            ("t2", "t3"): "same", ("t3", "t2"): "b"}   # no clear answer
+    pairs, seen = time_shares.decided_pairs(ids, judg)
+    assert pairs == {(0, 1): 0} and seen == 3
+
+
+@pytest.mark.parametrize("objective", ["span", "even", "mid"])
+def test_solver_fills_the_day_and_keeps_the_ranking(objective):
+    per_day = np.array([1.0, 2.0, 0.5, 0.2])
+    pairs = {(i, j): i for i in range(4) for j in range(i + 1, 4)}   # 0 > 1 > 2 > 3 per go
+    w, relaxed = time_shares.solve_occupation(per_day, pairs, objective)
+    assert relaxed == 0
+    assert w @ per_day == pytest.approx(time_shares.HOURS_PER_DAY)
+    for a, b in [(0, 1), (1, 2), (2, 3)]:
+        assert w[a] >= w[b] + time_shares.MARGIN - 1e-9
+
+
+def test_time_shares_fill_each_day():
+    days = defaultdict(float)
+    for r in csv.DictReader(open(time_shares.OUT / "time_shares.csv")):
+        days[r["onet_code"]] += float(r["share"])
+    assert len(days) > 800
+    assert all(d == pytest.approx(1, abs=1e-3) for d in days.values())
+
+
+def test_scan_reports_hours_for_full_time_staff():
+    occ = core.occupations()
+    res = core.scan([{"soc": "2412", "value": 3}, {"soc": "4122", "value": 1}], mode="count")
+    e1 = 3 * occ["2412"]["exposure"]["E1"] + occ["4122"]["exposure"]["E1"]
+    assert res["firm"]["hours"]["E1"] == round(e1 * core.TASK_HOURS)
+    assert sum(res["firm"]["hours"].values()) == pytest.approx(4 * core.TASK_HOURS, abs=2)
+
+
+def test_task_hours_add_up_to_the_week():
+    soc = next(s for s, o in core.occupations().items()
+               if o["exposure"] and o["onet"] and all(l["weighting"] == "time" for l in o["onet"]))
+    hours = [t["hours"] for b in core.BUCKETS for t in core.tasks(soc)["tasks"][b]]
+    assert sum(hours) == pytest.approx(core.TASK_HOURS, abs=0.1 * len(hours))

@@ -103,7 +103,7 @@ footer p { margin: 0 0 6px; }
       <h2 id="res">Where AI could help</h2>
       <div class="bar" id="firmbar" aria-hidden="true"></div>
       <div class="legend" id="legend"></div>
-      <p class="note">Share of all tasks across your workforce, weighting each role by headcount.</p>
+      <p class="note">Share of working time across your workforce, weighting each role by headcount. Hours a week assume full-time staff. They are time spent on these tasks, not time saved.</p>
       <div class="lists">
         <div><h2><i class="e1" style="display:inline-block;width:10px;height:10px;border-radius:2px"></i> Buy and train</h2>
           <p class="note">An off-the-shelf AI assistant could halve the time on these roles' E1 tasks. Licences and training.</p>
@@ -117,7 +117,7 @@ footer p { margin: 0 0 6px; }
   </div>
 
   <footer>
-    <p><b>How to read this.</b> Each role is mapped to O*NET occupations, whose tasks are labelled with the "GPTs are GPTs" exposure rubric: <b>E1</b> an AI assistant alone could halve the time at equal quality; <b>E2</b> it would take software or an agent built on AI; <b>E0</b> neither. Shares are of tasks, not time, and say nothing about jobs lost.</p>
+    <p><b>How to read this.</b> Each role is mapped to O*NET occupations, whose tasks are labelled with the "GPTs are GPTs" exposure rubric: <b>E1</b> an AI assistant alone could halve the time at equal quality; <b>E2</b> it would take software or an agent built on AI; <b>E0</b> neither. Time per task is estimated: how often O*NET's survey says each task is done, times how long a model judges one go takes, using the method of <a href="https://arxiv.org/abs/2608.05172">Hatgis-Kessell, Aguirre, Wan and Bommasani (2026)</a>. Hours assume a full-time 37.5-hour week, about 33 hours of it on the listed tasks. They are hours spent on tasks, not hours AI would save, and say nothing about jobs lost.</p>
     <p><b>Limits.</b> O*NET describes US jobs. Industry mixes are typical, not yours. Exposure is potential, not adoption. No check of data, systems or readiness.</p>
     <p id="sources"></p>
   </footer>
@@ -141,7 +141,7 @@ async function init() {
   $("#industry").innerHTML = Object.entries(groups).map(([g, list]) =>
     `<optgroup label="${esc(g)}">${list.map(i => `<option value="${i.code}">${i.code} ${esc(i.name)}</option>`).join("")}</optgroup>`).join("");
   $("#industry").value = "69";
-  $("#sources").innerHTML = `Index: ${esc(meta.index)}. Industry mix: ${esc(meta.industry_source)} (Open Government Licence). O*NET 31.0 (CC BY 4.0).`;
+  $("#sources").innerHTML = `Index: ${esc(meta.index)}. ${esc(meta.time_source)}. Industry mix: ${esc(meta.industry_source)} (Open Government Licence). O*NET 31.0 (CC BY 4.0).`;
   await loadIndustry();
 }
 
@@ -199,13 +199,13 @@ async function rescan() {
   if (state.mode === "percent") body.headcount = +$("#headcount").value || 1;
   let res;
   try { res = await api("/api/scan", body); } catch (e) { return; }
-  const s = res.firm.shares;
+  const s = res.firm.shares, h = res.firm.hours;
   $("#firmbar").innerHTML = ["E1", "E2", "E0"].map(b => `<span class="${b.toLowerCase()}" style="width:${(s[b] || 0) * 100}%"></span>`).join("");
   const names = { E1: "Buy and train", E2: "Build", E0: "People stay central" };
   $("#legend").innerHTML = ["E1", "E2", "E0"].map(b =>
-    `<div><i class="${b.toLowerCase()}"></i>${names[b]}<b>${pct(s[b])}</b></div>`).join("");
+    `<div><i class="${b.toLowerCase()}"></i>${names[b]}<b>${pct(s[b])}</b><span style="white-space:nowrap">≈ ${h[b].toLocaleString("en-GB")} h/week</span></div>`).join("");
   const item = (q, b) => `<li><span class="occ" data-soc="${q.soc}">${esc(q.title)}</span>
-    <small>${Math.round(q.people).toLocaleString("en-GB")} ${Math.round(q.people) === 1 ? "person" : "people"} · ${pct(q.share)} of their tasks ${b}</small></li>`;
+    <small>${Math.round(q.people).toLocaleString("en-GB")} ${Math.round(q.people) === 1 ? "person" : "people"} · ${pct(q.share)} of their time (≈ ${q.hours_each} h a week each) on ${b} tasks</small></li>`;
   $("#quick").innerHTML = res.quick_wins.map(q => item(q, "E1")).join("");
   $("#build").innerHTML = res.build_candidates.map(q => item(q, "E2")).join("");
   if (!state.focus || !state.rows.some(r => r.soc === state.focus)) state.focus = res.quick_wins[0]?.soc;
@@ -215,10 +215,11 @@ async function rescan() {
 async function showTasks(soc) {
   state.focus = soc;
   const t = await api(`/api/occupations/${soc}/tasks`);
-  const list = (b, n) => t.tasks[b].slice(0, n).map(x => `<li>${esc(x.task)}${t.onet.length > 1 ? ` <small>(${esc(x.onet)})</small>` : ""}</li>`).join("") || "<li><small>None.</small></li>";
+  const list = (b, n) => t.tasks[b].slice(0, n).map(x => `<li>${esc(x.task)}${x.hours != null ? ` <small>≈ ${x.hours} h a week</small>` : ""}${t.onet.length > 1 ? ` <small>(${esc(x.onet)})</small>` : ""}</li>`).join("") || "<li><small>None.</small></li>";
   const more = b => t.tasks[b].length > 8 ? `<small>…and ${t.tasks[b].length - 8} more.</small>` : "";
+  const untimed = t.onet.filter(o => o.weighting !== "time");
   $("#tasks").innerHTML = `<h2>${esc(t.title)}: what to look at</h2>
-    <p class="note">Mapped to O*NET: ${t.onet.map(o => esc(o.title)).join(", ")}. Click any role to see its tasks.</p>
+    <p class="note">Mapped to O*NET: ${t.onet.map(o => esc(o.title)).join(", ")}. Click any role to see its tasks.${untimed.length ? ` No time estimate for ${untimed.map(o => esc(o.title)).join(", ")}, so its tasks count equally.` : ""}</p>
     <h3><i class="e1" style="display:inline-block;width:10px;height:10px;border-radius:2px"></i> Buy and train (E1)</h3><ul>${list("E1", 8)}</ul>${more("E1")}
     <h3><i class="e2" style="display:inline-block;width:10px;height:10px;border-radius:2px"></i> Build (E2)</h3><ul>${list("E2", 8)}</ul>${more("E2")}`;
 }
