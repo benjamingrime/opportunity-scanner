@@ -1,0 +1,1313 @@
+{
+ "summary": {
+  "model": "bedrock:deepseek.v3.2",
+  "n": 100,
+  "exact": 0.66,
+  "top3": 0.68,
+  "same_minor_group": 0.7,
+  "sure_share": 0.83,
+  "exact_when_sure": 0.783,
+  "searches_per_role": 2.83,
+  "tokens": {
+   "input": 3023012,
+   "output": 64969,
+   "cache_read": 0
+  },
+  "cost_usd": 2.3813,
+  "cost_per_role_usd": 0.02381,
+  "seconds": 278.6
+ },
+ "rows": [
+  {
+   "title": "Consumer insights manager",
+   "want": "2161",
+   "got": null,
+   "confidence": 0.0,
+   "alternatives": [],
+   "searches": [
+    "insight.*manager|consumer.*insight|market.*insight",
+    "insight|consumer",
+    "marketing.*manager|market.*research|brand.*manager"
+   ],
+   "reason": "No answer within the step limit."
+  },
+  {
+   "title": "Playgroup worker",
+   "want": "6111",
+   "got": "6111",
+   "confidence": 0.85,
+   "alternatives": [],
+   "searches": [
+    "playgroup",
+    "childcare|child care"
+   ],
+   "reason": "Playgroup roles (except managers) are consistently classified as Early education and childcare assistants in the ONS index."
+  },
+  {
+   "title": "Carpet and upholstery cleaner",
+   "want": "9224",
+   "got": "9224",
+   "confidence": 0.8,
+   "alternatives": [],
+   "searches": [
+    "carpet|upholstery|cleaner",
+    "carpet|upholstery|floor",
+    "upholstery|upholsterer"
+   ],
+   "reason": "Carpet and upholstery cleaning involves specialized textile cleaning with chemicals and equipment, matching the tasks of launderers and dry cleaners who work with fabrics and stains."
+  },
+  {
+   "title": "Logistic manager",
+   "want": "1243",
+   "got": "1243",
+   "confidence": 0.85,
+   "alternatives": [],
+   "searches": [
+    "logistic.*manager|manager.*logistic",
+    "logistics|logistic"
+   ],
+   "reason": "The title \"Logistic manager\" directly matches \"Manager, logistics\" in the ONS index, which is coded to Managers in logistics (SOC 1243)."
+  },
+  {
+   "title": "Newspaper librarian",
+   "want": "2471",
+   "got": "2471",
+   "confidence": 0.9,
+   "alternatives": [],
+   "searches": [
+    "newspaper|librarian",
+    "newspaper.*librarian|librarian.*newspaper",
+    "archivist|curator"
+   ],
+   "reason": "Newspaper librarian is a specialized librarian role managing newspaper collections, and all librarian titles in the index are coded to SOC 2471."
+  },
+  {
+   "title": "SOC Analyst",
+   "want": "2135",
+   "got": "2135",
+   "confidence": 0.95,
+   "alternatives": [],
+   "searches": [
+    "SOC.*analyst|analyst.*SOC",
+    "security.*analyst|cyber.*analyst",
+    "security|cyber",
+    "operations.*analyst|analyst.*operations"
+   ],
+   "reason": "SOC Analyst (Security Operations Center Analyst) is a cybersecurity role that matches the ONS index title \"Analyst, centre, operations, security\" and falls under Cyber security professionals who perform security monitoring, threat analysis, and incident response."
+  },
+  {
+   "title": "Coach examiner",
+   "want": "5236",
+   "got": "3581",
+   "confidence": 0.85,
+   "alternatives": [],
+   "searches": [
+    "coach.*examiner|examiner.*coach",
+    "examiner",
+    "coach",
+    "driving.*examiner|examiner.*driving"
+   ],
+   "reason": "Coach examiner is a specialized driving examiner role that assesses coach drivers' competence and compliance with regulations, fitting within the Inspectors of standards and regulations unit group which includes transportation inspectors."
+  },
+  {
+   "title": "Litter picker",
+   "want": "9222",
+   "got": null,
+   "confidence": 0.0,
+   "alternatives": [],
+   "searches": [
+    "litter.*picker|picker.*litter",
+    "picker",
+    "street.*clean|clean.*street|refuse|salvage",
+    "cleaner"
+   ],
+   "reason": "No answer within the step limit."
+  },
+  {
+   "title": "Sports secretary",
+   "want": "4214",
+   "got": "4215",
+   "confidence": 0.7,
+   "alternatives": [],
+   "searches": [
+    "sports.*secretary|secretary.*sports",
+    "secretary",
+    "sports.*admin|admin.*sports|sports.*officer|officer.*sports"
+   ],
+   "reason": "Sports secretary is an administrative role similar to club secretary, which is classified under personal assistants and other secretaries."
+  },
+  {
+   "title": "Scrap cutter",
+   "want": "5213",
+   "got": "8120",
+   "confidence": 0.7,
+   "alternatives": [],
+   "searches": [
+    "scrap.*cutter|cutter.*scrap",
+    "cutter|cutting"
+   ],
+   "reason": "Scrap cutter is specifically listed as 'Cutter-up, scrap' in the ONS index under Metal working machine operatives, which involves operating cutting machines for metal processing."
+  },
+  {
+   "title": "Call centre operative",
+   "want": "7211",
+   "got": "7211",
+   "confidence": 0.95,
+   "alternatives": [],
+   "searches": [
+    "call centre",
+    "call|contact centre",
+    "operative"
+   ],
+   "reason": "Call centre operative directly matches the SOC 7211 category for call and contact centre occupations, with multiple similar titles in the ONS index confirming this classification."
+  },
+  {
+   "title": "Products specialist",
+   "want": "3552",
+   "got": "3552",
+   "confidence": 0.6,
+   "alternatives": [],
+   "searches": [
+    "products.*specialist|specialist.*products",
+    "product specialist",
+    "specialist"
+   ],
+   "reason": "The ONS index shows 'Specialist, product' coded to Business sales executives (3552), which involves product knowledge, customer proposals, and sales activities typical of a products specialist role."
+  },
+  {
+   "title": "KC",
+   "want": "2411",
+   "got": "4159",
+   "confidence": 0.1,
+   "alternatives": [],
+   "searches": [
+    "KC",
+    "kitchen|cook|chef|catering",
+    "coordinator|co-ordinator",
+    "key"
+   ],
+   "reason": "KC is an ambiguous abbreviation with no description, but could potentially be an administrative coordinator role"
+  },
+  {
+   "title": "District surveyor",
+   "want": "2121",
+   "got": "2121",
+   "confidence": 0.8,
+   "alternatives": [],
+   "searches": [
+    "district surveyor",
+    "surveyor",
+    "district"
+   ],
+   "reason": "District surveyor is similar to borough and county surveyor roles which are coded to Civil engineers, involving public works and infrastructure management at local government level."
+  },
+  {
+   "title": "Vehicle body repairer",
+   "want": "5232",
+   "got": "5232",
+   "confidence": 0.95,
+   "alternatives": [],
+   "searches": [
+    "vehicle body|body repair",
+    "bodywork|panel beater|car body"
+   ],
+   "reason": "The job title \"Vehicle body repairer\" directly corresponds to SOC 5232 \"Vehicle body builders and repairers\" in the ONS coding index."
+  },
+  {
+   "title": "Supermarket manager",
+   "want": "1150",
+   "got": "1150",
+   "confidence": 0.9,
+   "alternatives": [],
+   "searches": [
+    "supermarket.*manager|manager.*supermarket",
+    "retail.*manager|store.*manager|shop.*manager",
+    "supermarket"
+   ],
+   "reason": "Supermarket manager is classified under retail management, which falls under unit group 1150 for managers and directors in retail and wholesale."
+  },
+  {
+   "title": "Event director",
+   "want": "3557",
+   "got": "3557",
+   "confidence": 0.85,
+   "alternatives": [],
+   "searches": [
+    "Event director",
+    "event",
+    "director"
+   ],
+   "reason": "Event director roles are consistently classified under Events and exhibition managers and organisers in the ONS index, with tasks including planning, coordinating, and managing events."
+  },
+  {
+   "title": "Registry manager",
+   "want": "4141",
+   "got": "4141",
+   "confidence": 0.7,
+   "alternatives": [],
+   "searches": [
+    "registry.*manager|manager.*registry",
+    "registry",
+    "office.*manager|administrative.*manager|records.*manager",
+    "records.*manager|manager.*records"
+   ],
+   "reason": "Registry manager aligns with office management roles that oversee records and administrative systems, similar to \"Manager, records\" in the coding index."
+  },
+  {
+   "title": "Tour guide",
+   "want": "6219",
+   "got": "6219",
+   "confidence": 0.95,
+   "alternatives": [],
+   "searches": [
+    "tour guide",
+    "guide",
+    "tourist"
+   ],
+   "reason": "Tour guide is explicitly coded as 'Guide, tourist' in the ONS index to Leisure and travel service occupations n.e.c., with tasks including describing tour points of interest and leading groups to sites."
+  },
+  {
+   "title": "Domestic operative",
+   "want": "9223",
+   "got": "9223",
+   "confidence": 0.95,
+   "alternatives": [],
+   "searches": [
+    "domestic.*operative|operative.*domestic",
+    "domestic"
+   ],
+   "reason": "Domestic operative is directly coded as Cleaners and domestics in the ONS index with the title \"Operative, domestic (commercial cleaning)\"."
+  },
+  {
+   "title": "AM",
+   "want": "1112",
+   "got": "3556",
+   "confidence": 0.2,
+   "alternatives": [],
+   "searches": [
+    "AM",
+    "Account.*Manager|Manager.*Account",
+    "Area.*Manager|Manager.*Area|Assistant.*Manager|Manager.*Assistant",
+    "Administrative.*Manager|Manager.*Administrative"
+   ],
+   "reason": "AM most commonly stands for Account Manager or Area Manager in business contexts, which typically map to Sales accounts and business development managers, but the title is too vague for certainty."
+  },
+  {
+   "title": "Vehicle glazier",
+   "want": "8145",
+   "got": "8145",
+   "confidence": 0.95,
+   "alternatives": [],
+   "searches": [
+    "vehicle.*glazier|glazier.*vehicle",
+    "glazier"
+   ],
+   "reason": "The ONS index specifically codes 'Glazier, automotive' to this unit group, and its tasks include installing, repairing, or replacing safety glass on vehicles."
+  },
+  {
+   "title": "Litigation secretary",
+   "want": "4212",
+   "got": "4212",
+   "confidence": 0.95,
+   "alternatives": [],
+   "searches": [
+    "litigation.*secretary|secretary.*litigation",
+    "secretary",
+    "legal.*secretary"
+   ],
+   "reason": "Litigation secretary is a specialized type of legal secretary focused on court cases, and the ONS index explicitly codes 'Secretary, legal' to Legal secretaries (4212) whose tasks include preparing litigation documents and attending legal hearings."
+  },
+  {
+   "title": "Political correspondent",
+   "want": "2492",
+   "got": "2492",
+   "confidence": 0.9,
+   "alternatives": [],
+   "searches": [
+    "political.*correspondent|correspondent.*political",
+    "correspondent|journalist|reporter",
+    "political|politics|parliament"
+   ],
+   "reason": "Political correspondent is a specialized journalism role involving research, interviews, and news reporting on political matters, which aligns with the core tasks of newspaper and periodical journalists and reporters."
+  },
+  {
+   "title": "Packer-driver",
+   "want": "8219",
+   "got": "8219",
+   "confidence": 0.9,
+   "alternatives": [],
+   "searches": [
+    "packer.*driver|driver.*packer",
+    "packer",
+    "driver"
+   ],
+   "reason": "The ONS index has a direct match for 'Driver-packer' coded to Road transport drivers n.e.c."
+  },
+  {
+   "title": "Chartered secretary",
+   "want": "2435",
+   "got": "2435",
+   "confidence": 0.9,
+   "alternatives": [],
+   "searches": [
+    "chartered.*secretary|secretary.*chartered",
+    "secretary",
+    "company.*secretary|secretary.*company"
+   ],
+   "reason": "Chartered secretary is a qualified professional role specifically mapped to Professional/Chartered company secretaries in the ONS index."
+  },
+  {
+   "title": "Hostel matron",
+   "want": "6134",
+   "got": "6134",
+   "confidence": 0.85,
+   "alternatives": [],
+   "searches": [
+    "hostel|matron",
+    "residential|warden|houseparent"
+   ],
+   "reason": "Hostel matron aligns with houseparents and residential wardens who oversee residents in institutional settings and provide care and supervision."
+  },
+  {
+   "title": "Pharmaceutical engineer",
+   "want": "2125",
+   "got": "2125",
+   "confidence": 0.85,
+   "alternatives": [],
+   "searches": [
+    "pharmaceutical.*engineer|engineer.*pharmaceutical",
+    "pharmaceutical|pharmacy.*engineer"
+   ],
+   "reason": "Pharmaceutical engineers are specifically coded as production and process engineers in the ONS index, focusing on manufacturing and process optimization in pharmaceutical production."
+  },
+  {
+   "title": "Animal nurse",
+   "want": "3240",
+   "got": "3240",
+   "confidence": 0.95,
+   "alternatives": [],
+   "searches": [
+    "animal nurse",
+    "veterinary nurse",
+    "animal care|veterinary assistant"
+   ],
+   "reason": "Animal nurse is a common alternative term for veterinary nurse, which maps directly to SOC 3240 Veterinary nurses."
+  },
+  {
+   "title": "Royal navy officer",
+   "want": "1161",
+   "got": "1161",
+   "confidence": 0.95,
+   "alternatives": [],
+   "searches": [
+    "royal.*navy|navy.*officer",
+    "officer.*armed|armed.*officer|military.*officer",
+    "navy|naval"
+   ],
+   "reason": "The ONS coding index shows \"Officer, naval, Royal\" is directly coded to 1161 \"Officers in armed forces\"."
+  },
+  {
+   "title": "Telecommunications director",
+   "want": "1137",
+   "got": "1137",
+   "confidence": 0.85,
+   "alternatives": [],
+   "searches": [
+    "telecommunications.*director|director.*telecommunications",
+    "telecommunications",
+    "director.*it|it.*director|information.*technology.*director"
+   ],
+   "reason": "Telecommunications directors oversee technology infrastructure and systems, aligning with the responsibilities of Information technology directors who manage IT operations, security, and strategic technology planning."
+  },
+  {
+   "title": "Courier service owner",
+   "want": "1140",
+   "got": "1241",
+   "confidence": 0.7,
+   "alternatives": [],
+   "searches": [
+    "courier|delivery|owner|proprietor",
+    "courier.*manager|courier.*owner|delivery.*owner|delivery.*manager",
+    "transport.*manager|distribution.*manager|logistics.*manager"
+   ],
+   "reason": "Courier service owner fits best under Managers in transport and distribution as they oversee delivery operations and manage a transport business."
+  },
+  {
+   "title": "Market supervisor",
+   "want": "7132",
+   "got": "7132",
+   "confidence": 0.7,
+   "alternatives": [],
+   "searches": [
+    "market.*supervisor|supervisor.*market",
+    "market",
+    "supervisor"
+   ],
+   "reason": "Market supervisor most likely refers to a retail sales supervisor role in a market or supermarket setting, which aligns with SOC 7132 for sales supervisors in retail and wholesale."
+  },
+  {
+   "title": "Seamless hand",
+   "want": "5419",
+   "got": "8146",
+   "confidence": 0.8,
+   "alternatives": [],
+   "searches": [
+    "seamless",
+    "hand",
+    "seam"
+   ],
+   "reason": "\"Seamless hand\" matches \"Machinist, seamless\" in the ONS index, which is coded to Sewing machinists (8146), involving operating sewing machines for garment production."
+  },
+  {
+   "title": "Offshore installation manager",
+   "want": "1123",
+   "got": "1123",
+   "confidence": 0.95,
+   "alternatives": [],
+   "searches": [
+    "offshore.*manager|installation.*manager",
+    "offshore",
+    "installation.*manager|manager.*installation"
+   ],
+   "reason": "Direct match found in ONS index as \"Manager, installations, offshore\" coded to Production managers and directors in mining and energy."
+  },
+  {
+   "title": "Retail merchandiser",
+   "want": "3553",
+   "got": "3553",
+   "confidence": 0.85,
+   "alternatives": [],
+   "searches": [
+    "merchandiser",
+    "retail.*merchandiser|merchandiser.*retail"
+   ],
+   "reason": "Retail merchandiser matches the ONS index entry for 'Merchandiser' which is coded to SOC 3553, involving buying merchandise, analyzing sales trends, and inventory management."
+  },
+  {
+   "title": "Sheet parer",
+   "want": "8139",
+   "got": "5419",
+   "confidence": 0.7,
+   "alternatives": [
+    "5412",
+    "8113",
+    "8139"
+   ],
+   "searches": [
+    "sheet.*parer|parer.*sheet",
+    "parer",
+    "sheet"
+   ],
+   "reason": "Parer occupations are most commonly classified in textiles and garments trades, which includes trimming and preparing sheet materials."
+  },
+  {
+   "title": "Audit examiner",
+   "want": "2421",
+   "got": "2421",
+   "confidence": 0.85,
+   "alternatives": [],
+   "searches": [
+    "audit.*examiner|examiner.*audit",
+    "audit",
+    "examiner",
+    "examiner.*account|account.*examiner|financial.*examiner|examiner.*financial"
+   ],
+   "reason": "Audit examiner is a professional financial examination role that aligns with Chartered and certified accountants (2421) which includes financial examiners who review accounts, conduct audits, and ensure compliance with regulations."
+  },
+  {
+   "title": "Insurance claims handler",
+   "want": "4132",
+   "got": "4132",
+   "confidence": 0.85,
+   "alternatives": [],
+   "searches": [
+    "claims.*handler|handler.*claims",
+    "insurance.*claims|claims.*insurance"
+   ],
+   "reason": "The ONS index directly maps \"Handler, claims\" to Pensions and insurance clerks and assistants (4132), which involves processing insurance claims and related administrative tasks."
+  },
+  {
+   "title": "Fork truck driver",
+   "want": "8222",
+   "got": "8222",
+   "confidence": 0.99,
+   "alternatives": [],
+   "searches": [
+    "fork.*truck|forklift",
+    "fork.*lift|lift.*truck"
+   ],
+   "reason": "Fork truck driver is a direct match for Fork-lift truck drivers (SOC 8222) as shown by multiple title variations in the ONS index."
+  },
+  {
+   "title": "Lunchtime assistant",
+   "want": "9232",
+   "got": "9232",
+   "confidence": 0.7,
+   "alternatives": [],
+   "searches": [
+    "lunchtime",
+    "midday"
+   ],
+   "reason": "Most lunchtime assistant roles in schools are classified under School midday and crossing patrol occupations, which involves supervising children during lunch breaks."
+  },
+  {
+   "title": "Renderer",
+   "want": "5321",
+   "got": "5321",
+   "confidence": 0.7,
+   "alternatives": [],
+   "searches": [
+    "renderer",
+    "plaster|stucco|cement|finish",
+    "plasterer|drywall|wallboard|skimming"
+   ],
+   "reason": "Renderer in construction context applies cement-based coatings to walls, which aligns with plasterers' work in the SOC classification."
+  },
+  {
+   "title": "Management services controller",
+   "want": "2431",
+   "got": null,
+   "confidence": 0.0,
+   "alternatives": [],
+   "searches": [
+    "management.*controller|controller.*management",
+    "controller",
+    "management.*services|services.*management"
+   ],
+   "reason": "No answer within the step limit."
+  },
+  {
+   "title": "Sales administration assistant",
+   "want": "4151",
+   "got": "4151",
+   "confidence": 0.95,
+   "alternatives": [],
+   "searches": [
+    "sales.*admin|admin.*sales",
+    "assistant.*sales|sales.*assistant"
+   ],
+   "reason": "The title \"Sales administration assistant\" directly matches multiple indexed variations like \"Assistant, admin (sales)\" and \"Assistant, administration (sales)\" in SOC 4151 for Sales administrators."
+  },
+  {
+   "title": "Portering supervisor",
+   "want": "9262",
+   "got": "9251",
+   "confidence": 0.7,
+   "alternatives": [],
+   "searches": [
+    "porter",
+    "supervisor",
+    "porter.*supervisor|supervisor.*porter"
+   ],
+   "reason": "Portering supervisor oversees porters who handle materials and goods, aligning with Elementary storage supervisors who supervise helpers and material movers."
+  },
+  {
+   "title": "Fish preparer",
+   "want": "5433",
+   "got": "5433",
+   "confidence": 0.75,
+   "alternatives": [],
+   "searches": [
+    "fish|seafood",
+    "preparer|preparation"
+   ],
+   "reason": "Fish preparation roles like filleter, boner, and cleaner are consistently coded to Fishmongers and poultry dressers in the ONS index, and their tasks involve cutting and preparing meat for retail."
+  },
+  {
+   "title": "Agile coach",
+   "want": "2440",
+   "got": null,
+   "confidence": 0.0,
+   "alternatives": [],
+   "searches": [
+    "agile.*coach|coach.*agile",
+    "coach",
+    "agile"
+   ],
+   "reason": "No answer within the step limit."
+  },
+  {
+   "title": "Textile designer",
+   "want": "3422",
+   "got": "3422",
+   "confidence": 0.85,
+   "alternatives": [],
+   "searches": [
+    "textile",
+    "designer",
+    "textile.*design|design.*textile"
+   ],
+   "reason": "Textile designers create patterns and designs for fabrics used in clothing and fashion, aligning with Clothing, fashion and accessories designers who design custom clothing and accessories and develop product groups."
+  },
+  {
+   "title": "Band f",
+   "want": "2439",
+   "got": "4111",
+   "confidence": 0.3,
+   "alternatives": [],
+   "searches": [
+    "band f",
+    "band"
+   ],
+   "reason": "Band F appears to be a public sector grading level, and similar band titles in the index are most commonly coded to National government administrative occupations."
+  },
+  {
+   "title": "Builder's machinist",
+   "want": "8131",
+   "got": null,
+   "confidence": 0.0,
+   "alternatives": [],
+   "searches": [
+    "machinist",
+    "builder.*machinist|machinist.*builder",
+    "construction.*machine|machine.*construction",
+    "crane|excavator|bulldozer|fork.*lift"
+   ],
+   "reason": "No answer within the step limit."
+  },
+  {
+   "title": "Taxation manager",
+   "want": "2423",
+   "got": "2423",
+   "confidence": 0.9,
+   "alternatives": [],
+   "searches": [
+    "taxation.*manager|manager.*taxation",
+    "taxation|tax",
+    "manager"
+   ],
+   "reason": "The ONS index specifically lists 'Manager, tax' under Taxation experts (2423), indicating this unit group includes managerial roles in taxation."
+  },
+  {
+   "title": "Tobacco planter",
+   "want": "5112",
+   "got": "5112",
+   "confidence": 0.8,
+   "alternatives": [],
+   "searches": [
+    "tobacco",
+    "planter|farmer|agricultur",
+    "crop|grower|cultivat"
+   ],
+   "reason": "Tobacco planter is a horticultural cultivation role similar to tea, coffee, and rubber planters which are classified under Horticultural trades."
+  },
+  {
+   "title": "Software support analyst",
+   "want": "3132",
+   "got": "3132",
+   "confidence": 0.8,
+   "alternatives": [],
+   "searches": [
+    "software.*support|support.*software",
+    "support.*analyst|analyst.*support"
+   ],
+   "reason": "Most IT support analyst roles in the ONS index map to IT user support technicians, which involves answering user inquiries and resolving software problems."
+  },
+  {
+   "title": "Ground worker",
+   "want": "9121",
+   "got": "9121",
+   "confidence": 0.95,
+   "alternatives": [],
+   "searches": [
+    "ground worker",
+    "ground"
+   ],
+   "reason": "Groundworker is explicitly coded to SOC 9121 in the ONS index, with tasks involving construction groundwork like trench digging, pipe installation, and surface resurfacing."
+  },
+  {
+   "title": "Finance officer",
+   "want": "4124",
+   "got": "4124",
+   "confidence": 0.9,
+   "alternatives": [],
+   "searches": [
+    "Finance officer",
+    "Finance|financial.*officer"
+   ],
+   "reason": "The ONS job-title index directly maps 'Finance officers' to SOC 4124, which involves financial record-keeping, reconciliation, and compiling financial reports."
+  },
+  {
+   "title": "Chef manager",
+   "want": "5434",
+   "got": "5434",
+   "confidence": 0.9,
+   "alternatives": [],
+   "searches": [
+    "chef.*manager|manager.*chef",
+    "chef"
+   ],
+   "reason": "The ONS index specifically codes 'Chef-manager' to SOC 5434 (Chefs), which includes managerial responsibilities like supervising staff and planning food preparation activities."
+  },
+  {
+   "title": "Market organiser",
+   "want": "7124",
+   "got": "3557",
+   "confidence": 0.7,
+   "alternatives": [
+    "7124",
+    "3554",
+    "2432"
+   ],
+   "searches": [
+    "market.*organiser|organiser.*market",
+    "organiser|organizer",
+    "market"
+   ],
+   "reason": "Market organiser aligns with event organisation roles that coordinate markets as events, similar to event organisers in this unit group."
+  },
+  {
+   "title": "Area engineer",
+   "want": "2124",
+   "got": "2123",
+   "confidence": 0.7,
+   "alternatives": [],
+   "searches": [
+    "area.*engineer|engineer.*area",
+    "engineer$"
+   ],
+   "reason": "Area engineer titles in the ONS index are most commonly coded to Electrical engineers (2123), which often involves geographical area responsibilities for power distribution and telecommunications networks."
+  },
+  {
+   "title": "Learning coach",
+   "want": "2312",
+   "got": "3574",
+   "confidence": 0.7,
+   "alternatives": [],
+   "searches": [
+    "learning coach",
+    "coach",
+    "learning"
+   ],
+   "reason": "Learning coach aligns with vocational training roles that help individuals develop skills and knowledge, similar to other coaching roles classified under Other vocational and industrial trainers."
+  },
+  {
+   "title": "Telephone sales agent",
+   "want": "7113",
+   "got": "7113",
+   "confidence": 0.95,
+   "alternatives": [],
+   "searches": [
+    "telephone sales",
+    "sales agent",
+    "call centre|contact centre"
+   ],
+   "reason": "The job title \"Telephone sales agent\" directly corresponds to SOC 2020 unit group 7113 \"Telephone salespersons\" which specifically covers roles involving telephone-based sales activities."
+  },
+  {
+   "title": "Accredited checking technician",
+   "want": "3212",
+   "got": "3212",
+   "confidence": 0.85,
+   "alternatives": [],
+   "searches": [
+    "accredited.*checking|checking.*accredited",
+    "checking.*technician|technician.*checking",
+    "accredited"
+   ],
+   "reason": "Checking technicians in pharmaceutical contexts are classified as pharmaceutical technicians based on ONS job title matches."
+  },
+  {
+   "title": "Automation test analyst",
+   "want": "2136",
+   "got": "2136",
+   "confidence": 0.85,
+   "alternatives": [],
+   "searches": [
+    "automation.*test|test.*automation",
+    "test.*analyst|analyst.*test",
+    "automation",
+    "software.*tester|tester.*software"
+   ],
+   "reason": "Automation test analyst is a specialized IT testing role that involves designing and developing automated testing tools, which aligns with the core tasks of IT quality and testing professionals."
+  },
+  {
+   "title": "Impresario",
+   "want": "3413",
+   "got": "1255",
+   "confidence": 0.75,
+   "alternatives": [],
+   "searches": [
+    "Impresario",
+    "producer|arts.*manager|entertainment.*manager",
+    "promoter|manager.*entertainment|manager.*arts|agent.*entertainment"
+   ],
+   "reason": "An impresario organizes and finances performing arts events, combining creative production with business management, aligning with managers and directors in creative industries who handle entertainment agents and client career strategies."
+  },
+  {
+   "title": "Radio electrician",
+   "want": "5243",
+   "got": "5243",
+   "confidence": 0.8,
+   "alternatives": [],
+   "searches": [
+    "radio.*electrician|electrician.*radio",
+    "radio|communications|telecom",
+    "electrician"
+   ],
+   "reason": "Radio electrician specializes in radio equipment repair and service, which aligns with SOC 5243's focus on TV, video and audio equipment including radios, as shown by ONS index titles like 'fitter, radio' and 'technician, radio' coded to this unit group."
+  },
+  {
+   "title": "Shunting engine driver",
+   "want": "8231",
+   "got": "8231",
+   "confidence": 0.8,
+   "alternatives": [],
+   "searches": [
+    "shunting|shunter",
+    "engine driver",
+    "train driver|locomotive"
+   ],
+   "reason": "Shunting engine driver involves operating locomotives to move and switch railroad cars within rail yards, which aligns with the core task of driving engines within railroad yards found in the Train and tram drivers unit group."
+  },
+  {
+   "title": "Photocopier engineer",
+   "want": "5246",
+   "got": "5246",
+   "confidence": 0.95,
+   "alternatives": [],
+   "searches": [
+    "photocopier",
+    "copier|printer|office.*machine",
+    "repair|service|maintenance|engineer",
+    "office.*machine|business.*machine"
+   ],
+   "reason": "Photocopier engineers are classified under Electrical service and maintenance mechanics and repairers as they repair and maintain office machinery including photocopiers, with specific ONS index titles including 'Engineer, machine (office machinery)' and 'Repairer (office machinery)'."
+  },
+  {
+   "title": "Forgeman",
+   "want": "8115",
+   "got": "8115",
+   "confidence": 0.8,
+   "alternatives": [],
+   "searches": [
+    "Forgeman",
+    "forge"
+   ],
+   "reason": "Most forge-related occupations in the ONS index are classified as Metal making and treating process operatives, and the term suggests machine operation rather than skilled metalworking."
+  },
+  {
+   "title": "Class teacher",
+   "want": "2314",
+   "got": "2314",
+   "confidence": 0.7,
+   "alternatives": [],
+   "searches": [
+    "class teacher",
+    "teacher",
+    "class.*teacher|teacher.*class"
+   ],
+   "reason": "Class teacher is a standard term for primary school teachers responsible for a specific class, though the title is generic and could potentially refer to other education levels."
+  },
+  {
+   "title": "Family support worker",
+   "want": "3221",
+   "got": "3221",
+   "confidence": 0.85,
+   "alternatives": [],
+   "searches": [
+    "family support",
+    "support worker",
+    "family"
+   ],
+   "reason": "The ONS index shows 'Worker, family' and related family support roles are coded to Youth and community workers, which involves counseling families and helping them access community services."
+  },
+  {
+   "title": "Meteorological technician",
+   "want": "3119",
+   "got": "2114",
+   "confidence": 0.85,
+   "alternatives": [],
+   "searches": [
+    "meteorological|meteorologist",
+    "technician.*meteorological|meteorological.*technician",
+    "technician.*science|science.*technician"
+   ],
+   "reason": "Meteorological roles including 'Assistant, meteorological' are classified under Physical scientists (2114) in the ONS index, and the tasks involve meteorological data analysis and research."
+  },
+  {
+   "title": "Ambulance attendant",
+   "want": "6132",
+   "got": "6132",
+   "confidence": 0.95,
+   "alternatives": [],
+   "searches": [
+    "ambulance",
+    "attendant.*ambulance|ambulance.*attendant"
+   ],
+   "reason": "Ambulance attendant roles are explicitly classified under SOC 6132 in the ONS index, which covers ambulance staff excluding paramedics."
+  },
+  {
+   "title": "Repeater officer",
+   "want": "5242",
+   "got": null,
+   "confidence": 0.0,
+   "alternatives": [],
+   "searches": [
+    "repeater",
+    "officer",
+    "telecom|network|signal|communications",
+    "probation|correction|offender|prison"
+   ],
+   "reason": "No answer within the step limit."
+  },
+  {
+   "title": "Security engineer",
+   "want": "5245",
+   "got": "2135",
+   "confidence": 0.8,
+   "alternatives": [],
+   "searches": [
+    "security engineer",
+    "security",
+    "engineer"
+   ],
+   "reason": "Security engineer is a common title for cyber security professionals who design and implement information security systems, with O*NET listing Information Security Engineers under this unit group."
+  },
+  {
+   "title": "Recruitment adviser",
+   "want": "3571",
+   "got": "3571",
+   "confidence": 0.85,
+   "alternatives": [],
+   "searches": [
+    "recruitment.*adviser|adviser.*recruitment",
+    "recruitment",
+    "adviser|advisor"
+   ],
+   "reason": "Recruitment adviser is an HR advisory role similar to 'Adviser, HR' and other recruitment positions classified under Human resources and industrial relations officers."
+  },
+  {
+   "title": "Dental surgeon's assistant",
+   "want": "6133",
+   "got": "6133",
+   "confidence": 0.95,
+   "alternatives": [],
+   "searches": [
+    "dental.*assistant|assistant.*dental",
+    "dental.*surgeon|surgeon.*dental"
+   ],
+   "reason": "The ONS index directly lists \"Assistant, dental\" and \"Assistant, surgery, dental\" under Dental nurses (6133), which matches the job title exactly."
+  },
+  {
+   "title": "Company officer",
+   "want": "1163",
+   "got": null,
+   "confidence": 0.0,
+   "alternatives": [],
+   "searches": [
+    "company officer",
+    "officer",
+    "company"
+   ],
+   "reason": "No answer within the step limit."
+  },
+  {
+   "title": "Break-off fitter",
+   "want": "5223",
+   "got": "8120",
+   "confidence": 0.7,
+   "alternatives": [],
+   "searches": [
+    "break-off",
+    "fitter",
+    "break"
+   ],
+   "reason": "Break-off fitter is similar to Breaker-off titles found in the ONS index which map to Metal working machine operatives, involving operating machines to cut, shape, or break off metal components."
+  },
+  {
+   "title": "Proposals manager",
+   "want": "2455",
+   "got": null,
+   "confidence": 0.0,
+   "alternatives": [],
+   "searches": [
+    "proposals.*manager|manager.*proposals",
+    "proposals",
+    "bid.*manager|tender.*manager",
+    "bid|tender"
+   ],
+   "reason": "No answer within the step limit."
+  },
+  {
+   "title": "Safety attendant",
+   "want": "3582",
+   "got": null,
+   "confidence": 0.0,
+   "alternatives": [],
+   "searches": [
+    "safety.*attendant|attendant.*safety",
+    "attendant",
+    "safety",
+    "security.*guard|guard.*security"
+   ],
+   "reason": "No answer within the step limit."
+  },
+  {
+   "title": "Sub postmaster",
+   "want": "4123",
+   "got": "4123",
+   "confidence": 0.95,
+   "alternatives": [],
+   "searches": [
+    "sub.*postmaster|postmaster.*sub",
+    "postmaster"
+   ],
+   "reason": "Sub-postmaster is an exact match in the ONS coding index for SOC 4123 Bank and post office clerks."
+  },
+  {
+   "title": "Consultant ophthalmologist",
+   "want": "2252",
+   "got": "2212",
+   "confidence": 0.95,
+   "alternatives": [],
+   "searches": [
+    "ophthalmologist",
+    "consultant.*medical|medical.*consultant",
+    "specialist.*medical|medical.*specialist"
+   ],
+   "reason": "Consultant ophthalmologists are specialist medical doctors who provide ophthalmic consultations, fitting precisely within the Specialist medical practitioners unit group which includes ophthalmologists in its O*NET mapping."
+  },
+  {
+   "title": "Investment manager",
+   "want": "3534",
+   "got": "3534",
+   "confidence": 0.85,
+   "alternatives": [],
+   "searches": [
+    "investment.*manager|manager.*investment",
+    "investment|portfolio|fund.*manager"
+   ],
+   "reason": "The ONS index directly maps 'Manager, portfolio (investments)' to Financial accounts managers (3534), which includes managing investment funds and selecting specific investments."
+  },
+  {
+   "title": "Retoucher",
+   "want": "5423",
+   "got": "5423",
+   "confidence": 0.9,
+   "alternatives": [],
+   "searches": [
+    "Retoucher",
+    "photo.*retouch|digital.*retouch|image.*retouch",
+    "photo.*editor|image.*editor|digital.*editor"
+   ],
+   "reason": "ONS job-title index lists three retoucher roles (colour, photolitho, photographic) all classified under Print finishing and binding workers."
+  },
+  {
+   "title": "Time and motion analyst",
+   "want": "3544",
+   "got": "3549",
+   "confidence": 0.8,
+   "alternatives": [],
+   "searches": [
+    "time.*motion|motion.*time",
+    "analyst",
+    "work.*study|study.*work"
+   ],
+   "reason": "Time and motion analysis involves studying work processes and efficiency, which aligns with Business associate professionals n.e.c. (3549) where work study assessors are specifically coded."
+  },
+  {
+   "title": "Medical laboratory science officer",
+   "want": "2113",
+   "got": "2113",
+   "confidence": 0.8,
+   "alternatives": [],
+   "searches": [
+    "medical.*laboratory|laboratory.*medical",
+    "science.*officer|officer.*science"
+   ],
+   "reason": "Medical laboratory science officer matches professional scientific roles in medical laboratories that involve planning, developing procedures, and quality assurance rather than routine technician work."
+  },
+  {
+   "title": "Fork lift trainer",
+   "want": "8215",
+   "got": "8215",
+   "confidence": 0.9,
+   "alternatives": [],
+   "searches": [
+    "forklift.*train|train.*forklift",
+    "forklift|fork lift",
+    "instructor|trainer"
+   ],
+   "reason": "Forklift training is a specialized form of driving instruction, and the ONS index directly codes 'Instructor, forklift' to Driving instructors (8215)."
+  },
+  {
+   "title": "Electronic instrument mechanic",
+   "want": "5249",
+   "got": "5249",
+   "confidence": 0.7,
+   "alternatives": [],
+   "searches": [
+    "instrument.*mechanic|mechanic.*instrument",
+    "electronic.*instrument|instrument.*electronic",
+    "electronic.*mechanic|mechanic.*electronic"
+   ],
+   "reason": "Electronic instrument mechanics repair and maintain electronic equipment and instruments, aligning with electrical and electronic trades work on commercial and industrial equipment."
+  },
+  {
+   "title": "Ceramics consultant",
+   "want": "2129",
+   "got": "3429",
+   "confidence": 0.6,
+   "alternatives": [],
+   "searches": [
+    "ceramic",
+    "consultant"
+   ],
+   "reason": "Ceramics consultant most likely provides design or artistic consultation similar to 'Designer, ceramic' which is explicitly coded to Design occupations n.e.c."
+  },
+  {
+   "title": "Mental health nurse",
+   "want": "2235",
+   "got": "2235",
+   "confidence": 0.99,
+   "alternatives": [],
+   "searches": [
+    "mental health nurse"
+   ],
+   "reason": "The job title \"Mental health nurse\" exactly matches SOC 2020 unit group 2235 \"Mental health nurses\"."
+  },
+  {
+   "title": "Burner fitter",
+   "want": "5315",
+   "got": "5223",
+   "confidence": 0.7,
+   "alternatives": [],
+   "searches": [
+    "burner",
+    "fitter.*burner|burner.*fitter",
+    "fitter"
+   ],
+   "reason": "Burner fitter involves fitting and installing burners, which aligns with metal working production and maintenance fitters who install and maintain industrial machinery and equipment."
+  },
+  {
+   "title": "Field supervisor",
+   "want": "7220",
+   "got": "5330",
+   "confidence": 0.6,
+   "alternatives": [],
+   "searches": [
+    "field.*supervisor|supervisor.*field",
+    "supervisor",
+    "field"
+   ],
+   "reason": "Field supervisor typically refers to supervising field-based operations in construction, utilities, or similar trades, which aligns with Construction and building trades supervisors."
+  },
+  {
+   "title": "Exporter",
+   "want": "3542",
+   "got": "3542",
+   "confidence": 0.9,
+   "alternatives": [],
+   "searches": [
+    "exporter",
+    "export|international trade"
+   ],
+   "reason": "The job title 'Exporter' directly corresponds to SOC 3542 'Importers and exporters', with multiple export-related titles in the index mapping to this unit group."
+  },
+  {
+   "title": "Spray polisher",
+   "want": "5233",
+   "got": null,
+   "confidence": 0.0,
+   "alternatives": [],
+   "searches": [
+    "spray.*polisher|polisher.*spray",
+    "polisher",
+    "spray"
+   ],
+   "reason": "No answer within the step limit."
+  },
+  {
+   "title": "Section inspector",
+   "want": "9129",
+   "got": null,
+   "confidence": 0.0,
+   "alternatives": [],
+   "searches": [
+    "section.*inspector|inspector.*section",
+    "inspector",
+    "^section|section$",
+    "rail.*inspector|track.*inspector|construction.*inspector"
+   ],
+   "reason": "No answer within the step limit."
+  },
+  {
+   "title": "Iron moulder",
+   "want": "5212",
+   "got": "5212",
+   "confidence": 0.95,
+   "alternatives": [],
+   "searches": [
+    "iron.*moulder|moulder.*iron",
+    "moulder",
+    "foundry"
+   ],
+   "reason": "Iron moulder is a specific metalworking occupation that maps directly to Metal plate workers, smiths, moulders and related occupation (SOC 5212) in the ONS index."
+  },
+  {
+   "title": "Accommodation manager",
+   "want": "1221",
+   "got": "1221",
+   "confidence": 0.9,
+   "alternatives": [],
+   "searches": [
+    "accommodation.*manager|manager.*accommodation",
+    "accommodation|hostel|lodging"
+   ],
+   "reason": "The title directly matches 'Manager, accommodations' in the ONS index which is coded to Hotel and accommodation managers and proprietors."
+  },
+  {
+   "title": "Housing development officer",
+   "want": "3223",
+   "got": "3223",
+   "confidence": 0.85,
+   "alternatives": [],
+   "searches": [
+    "housing.*development|development.*housing",
+    "housing officer",
+    "development officer",
+    "property.*development|development.*property"
+   ],
+   "reason": "Housing development officer aligns with housing officer role involving property management, development coordination, and client assistance"
+  },
+  {
+   "title": "Flats steward",
+   "want": "6231",
+   "got": "6232",
+   "confidence": 0.7,
+   "alternatives": [],
+   "searches": [
+    "steward",
+    "flat|apartment",
+    "caretaker|porter|concierge"
+   ],
+   "reason": "Flats steward is most similar to caretaker or concierge roles involving building maintenance and basic management of residential properties."
+  },
+  {
+   "title": "Residential worker",
+   "want": "6135",
+   "got": "6135",
+   "confidence": 0.7,
+   "alternatives": [],
+   "searches": [
+    "Residential.*worker|worker.*Residential",
+    "residential"
+   ],
+   "reason": "The ONS job-title index shows 'Residential worker' is most commonly classified as Care workers and home carers (6135), with direct care and support tasks in residential settings."
+  },
+  {
+   "title": "After school assistant",
+   "want": "6117",
+   "got": "6117",
+   "confidence": 0.85,
+   "alternatives": [],
+   "searches": [
+    "after school",
+    "school assistant",
+    "assistant.*school|school.*assistant"
+   ],
+   "reason": "The ONS index directly codes 'Assistant, club, school, after' to Playworkers (6117), which involves supervising children's play activities and organizing recreational activities in after-school settings."
+  }
+ ]
+}

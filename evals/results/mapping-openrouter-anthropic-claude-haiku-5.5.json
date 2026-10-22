@@ -1,0 +1,1464 @@
+{
+ "summary": {
+  "model": "openrouter:anthropic/claude-haiku-5.5",
+  "n": 100,
+  "exact": 0.67,
+  "top3": 0.84,
+  "same_minor_group": 0.74,
+  "sure_share": 0.46,
+  "exact_when_sure": 0.913,
+  "searches_per_role": 1.62,
+  "tokens": {
+   "input": 2552500,
+   "output": 68794,
+   "cache_read": 2059141
+  },
+  "cost_usd": 0.1043,
+  "cost_per_role_usd": 0.00104,
+  "seconds": 72.8
+ },
+ "rows": [
+  {
+   "title": "Consumer insights manager",
+   "want": "2161",
+   "got": "2432",
+   "confidence": 0.4,
+   "alternatives": [
+    "2161",
+    "2434"
+   ],
+   "searches": [
+    "insight|market research",
+    "marketing",
+    "consumer"
+   ],
+   "reason": "A consumer insights manager is a managerial marketing role, and 2432 (Marketing and commercial managers) covers managing marketing activity and strategy based on market characteristics; the index's \"Manager, insights\" entries point to 2161 instead, so this is uncertain."
+  },
+  {
+   "title": "Playgroup worker",
+   "want": "6111",
+   "got": "6111",
+   "confidence": 0.6,
+   "alternatives": [
+    "3232",
+    "2324"
+   ],
+   "searches": [
+    "playgroup|pre-school|preschool"
+   ],
+   "reason": "The ONS index codes nearly all playgroup and pre-school staff titles (helper, leader, assistant, supervisor, key worker) to 6111 Early education and childcare assistants. The title gives no qualification or supervisory detail, so 3232 (practitioners, qualified level) is the main alternative."
+  },
+  {
+   "title": "Carpet and upholstery cleaner",
+   "want": "9224",
+   "got": "9224",
+   "confidence": 0.8,
+   "alternatives": [
+    "9229"
+   ],
+   "searches": [
+    "carpet|upholstery"
+   ],
+   "reason": "The index lists \"Cleaner (carpets)\", \"Cleaner, carpet\" and \"Cleaner, upholstery\" under 9224 (Launderers, dry cleaners and pressers), which matches the job title directly."
+  },
+  {
+   "title": "Logistic manager",
+   "want": "1243",
+   "got": "1243",
+   "confidence": 0.8,
+   "alternatives": [
+    "1140",
+    "1242"
+   ],
+   "searches": [
+    "logistic"
+   ],
+   "reason": "The index maps \"Manager, logistics\" and \"Manager, logistics and distribution\" to Managers in logistics (1243), which fits a logistics manager below director level."
+  },
+  {
+   "title": "Newspaper librarian",
+   "want": "2471",
+   "got": "2471",
+   "confidence": 0.8,
+   "alternatives": [
+    "4135",
+    "2472"
+   ],
+   "searches": [
+    "librar|archivist",
+    "newspaper|press cuttings|information officer"
+   ],
+   "reason": "A newspaper librarian manages the research library and cuttings archive, which is professional librarianship; the index has comparable titles such as \"Librarian, magazine\" and \"Librarian, media\" under 2471."
+  },
+  {
+   "title": "SOC Analyst",
+   "want": "2135",
+   "got": "2135",
+   "confidence": 0.85,
+   "alternatives": [
+    "2137",
+    "3133"
+   ],
+   "searches": [
+    "security operations|SOC analyst|cyber"
+   ],
+   "reason": "The index maps many security operations, incident response and security analyst titles to unit group 2135 (Cyber security professionals), which fits a SOC analyst role."
+  },
+  {
+   "title": "Coach examiner",
+   "want": "5236",
+   "got": "3581",
+   "confidence": 0.6,
+   "alternatives": [
+    "8143",
+    "8212"
+   ],
+   "searches": [
+    "examiner|inspector.*vehicle|driving",
+    "vehicle examiner|coach|DVSA|transport inspector",
+    "vehicle inspector|vehicle test|inspector, vehicle|inspector, transport|examiner, driving"
+   ],
+   "reason": "A coach examiner most likely tests coaches for roadworthiness and regulatory compliance (as a DVSA-type vehicle examiner), which fits regulatory inspection under 3581; the index lists \"Examiner, driving\" and \"Inspector, vehicle\" under 3581."
+  },
+  {
+   "title": "Litter picker",
+   "want": "9222",
+   "got": "9222",
+   "confidence": 0.6,
+   "alternatives": [
+    "9229",
+    "9269"
+   ],
+   "searches": [
+    "litter|street cleaner"
+   ],
+   "reason": "A litter picker clears litter from public streets and open spaces, which matches the street cleaners unit group; the index has no direct \"litter picker\" entry, so I used the closest task match."
+  },
+  {
+   "title": "Sports secretary",
+   "want": "4214",
+   "got": "4215",
+   "confidence": 0.5,
+   "alternatives": [
+    "4113",
+    "3432"
+   ],
+   "searches": [
+    "sports|secretary.*sport|sport.*secretary",
+    "secretary"
+   ],
+   "reason": "\"Secretary\" titles tied to a club or organisation (e.g. \"Secretary, club\") are indexed under 4215 Personal assistants and other secretaries, and a sports secretary is usually an administrative role handling fixtures, registrations and correspondence rather than coaching or managing sport."
+  },
+  {
+   "title": "Scrap cutter",
+   "want": "5213",
+   "got": "8120",
+   "confidence": 0.7,
+   "alternatives": [
+    "8139",
+    "9139"
+   ],
+   "searches": [
+    "scrap"
+   ],
+   "reason": "The index lists \"Cutter-up, scrap\" under 8120 Metal working machine operatives, which matches \"Scrap cutter\" directly; the operator-of-cutting-machines tasks fit."
+  },
+  {
+   "title": "Call centre operative",
+   "want": "7211",
+   "got": "7211",
+   "confidence": 0.9,
+   "alternatives": [],
+   "searches": [
+    "call cent|contact cent"
+   ],
+   "reason": "The job title \"Call centre operative\" matches the unit group \"Call and contact centre occupations\" (7211) directly."
+  },
+  {
+   "title": "Products specialist",
+   "want": "3552",
+   "got": "3554",
+   "confidence": 0.45,
+   "alternatives": [
+    "3552",
+    "7129"
+   ],
+   "searches": [
+    "product(s)? specialist|specialist, product|products? (advisor|adviser|officer)"
+   ],
+   "reason": "The index has \"Specialist, product (marketing)\" and \"Specialist, products (marketing)\" under 3554 Marketing associate professionals, the closest title match, but the job details are minimal, so the code is uncertain."
+  },
+  {
+   "title": "KC",
+   "want": "2411",
+   "got": "2411",
+   "confidence": 0.85,
+   "alternatives": [
+    "2412",
+    "2419"
+   ],
+   "searches": [
+    "barrister|counsel|\\bKC\\b|\\bQC\\b"
+   ],
+   "reason": "KC is the post-nominal title King's Counsel (Queen's Counsel), which the index places under Barristers and judges (2411), and the index lists \"King's Counsel\" and \"Counsel, King's\" there."
+  },
+  {
+   "title": "District surveyor",
+   "want": "2121",
+   "got": "3581",
+   "confidence": 0.6,
+   "alternatives": [
+    "2454",
+    "2121"
+   ],
+   "searches": [
+    "district surveyor|surveyor, district|building control",
+    "surveyor",
+    "building control|building inspector|district"
+   ],
+   "reason": "A UK district surveyor is normally a local authority building control officer who inspects construction work for compliance with building regulations, which matches the inspection tasks under 3581; the index has no exact \"district surveyor\" entry, so this is inferred."
+  },
+  {
+   "title": "Vehicle body repairer",
+   "want": "5232",
+   "got": "5232",
+   "confidence": 0.95,
+   "alternatives": [],
+   "searches": [
+    "body (repairer|builder|repair)|repairer, (vehicle )?body"
+   ],
+   "reason": "The index has several exact matches for vehicle body repairers, all coded to unit group 5232 (Vehicle body builders and repairers)."
+  },
+  {
+   "title": "Supermarket manager",
+   "want": "1150",
+   "got": "1150",
+   "confidence": 0.8,
+   "alternatives": [
+    "7132",
+    "1139"
+   ],
+   "searches": [
+    "supermarket|store manager|retail manager",
+    "manager, (retail|store|shop|branch)"
+   ],
+   "reason": "A supermarket manager runs a retail store and is best matched to 1150 Managers and directors in retail and wholesale, which is the group the index uses for \"Manager, shop\" and \"Manager, store\" in retail settings."
+  },
+  {
+   "title": "Event director",
+   "want": "3557",
+   "got": "3557",
+   "confidence": 0.75,
+   "alternatives": [
+    "1139",
+    "1135"
+   ],
+   "searches": [
+    "event|exhibition"
+   ],
+   "reason": "The index maps \"Director, events\" and \"Director of events\" directly to 3557 (Events and exhibition managers and organisers), and the title's events focus fits that unit group."
+  },
+  {
+   "title": "Registry manager",
+   "want": "4141",
+   "got": "4141",
+   "confidence": 0.4,
+   "alternatives": [
+    "1259",
+    "2439"
+   ],
+   "searches": [
+    "registr",
+    "registry|records manager|archive manager"
+   ],
+   "reason": "\"Registry manager\" most plausibly means a manager of an organisation's registry or records office, which fits the office managers unit group (supervising administrative staff and filing/records systems); the index has no direct \"registry manager\" title, so this is an inference."
+  },
+  {
+   "title": "Tour guide",
+   "want": "6219",
+   "got": "6219",
+   "confidence": 0.8,
+   "alternatives": [
+    "6212",
+    "6211"
+   ],
+   "searches": [
+    "tour|guide"
+   ],
+   "reason": "The index lists \"Guide, tourist\" and \"Guide, coach\" under 6219 (Leisure and travel service occupations n.e.c.), which matches a tour guide leading visitors around sites; the title alone doesn't rule out a travel-agency or sports-guide reading."
+  },
+  {
+   "title": "Domestic operative",
+   "want": "9223",
+   "got": "9223",
+   "confidence": 0.85,
+   "alternatives": [
+    "6240",
+    "9229"
+   ],
+   "searches": [
+    "domestic",
+    "operative,? domestic|domestic operative"
+   ],
+   "reason": "The index has \"Operative, domestic (commercial cleaning)\" coded to 9223 Cleaners and domestics, and the other \"domestic\" titles (Cleaner, domestic; Domestic; Worker, domestic) also sit there."
+  },
+  {
+   "title": "AM",
+   "want": "1112",
+   "got": "3556",
+   "confidence": 0.2,
+   "alternatives": [
+    "3534",
+    "1241"
+   ],
+   "searches": [
+    "^am$|^am[ ,]|, am$|^a\\.?m\\.?$",
+    "account manager|area manager|manager, account|manager, area",
+    "assistant manager|manager, assistant"
+   ],
+   "reason": "\"AM\" alone is ambiguous; if it stands for Account Manager, the index most often codes that title to Sales accounts and business development managers (3556), though it could also be Area Manager, Assistant Manager, or Account Manager in finance or advertising."
+  },
+  {
+   "title": "Vehicle glazier",
+   "want": "8145",
+   "got": "8145",
+   "confidence": 0.72,
+   "alternatives": [
+    "5317",
+    "5441"
+   ],
+   "searches": [
+    "windscreen|glazier|vehicle glass"
+   ],
+   "reason": "The index codes \"Glazier, automotive\" and \"Fitter, windscreen\" to 8145 (Tyre, exhaust and windscreen fitters), which fits a vehicle glazier who fits vehicle glass, whereas building glaziers go to 5317."
+  },
+  {
+   "title": "Litigation secretary",
+   "want": "4212",
+   "got": "4212",
+   "confidence": 0.9,
+   "alternatives": [
+    "4131",
+    "3520"
+   ],
+   "searches": [
+    "legal sec|litigation|secretary.*legal|legal.*secretar"
+   ],
+   "reason": "A litigation secretary is a secretarial role within a law practice, which matches the index's \"Secretary, legal\" / Legal secretaries unit group 4212."
+  },
+  {
+   "title": "Political correspondent",
+   "want": "2492",
+   "got": "2492",
+   "confidence": 0.88,
+   "alternatives": [
+    "3413",
+    "2493"
+   ],
+   "searches": [
+    "correspondent|journalist|reporter"
+   ],
+   "reason": "A political correspondent is a journalist reporting on politics for newspapers or broadcasters, and the index places \"Correspondent\" and \"Journalist\" titles under 2492 Newspaper and periodical journalists and reporters."
+  },
+  {
+   "title": "Packer-driver",
+   "want": "8219",
+   "got": "8219",
+   "confidence": 0.7,
+   "alternatives": [
+    "9132",
+    "9253"
+   ],
+   "searches": [
+    "packer|packing.*driver|driver.*packer"
+   ],
+   "reason": "The index lists \"Driver-packer\" under 8219 (Road transport drivers n.e.c.), and \"Packer-driver\" is the same role with the words reversed; the job is primarily a driving role with packing duties."
+  },
+  {
+   "title": "Chartered secretary",
+   "want": "2435",
+   "got": "2435",
+   "confidence": 0.9,
+   "alternatives": [
+    "4214",
+    "1139"
+   ],
+   "searches": [],
+   "reason": "A chartered secretary is a qualified professional company secretary, which matches unit group 2435 (Professional/Chartered company secretaries) directly."
+  },
+  {
+   "title": "Hostel matron",
+   "want": "6134",
+   "got": "6134",
+   "confidence": 0.7,
+   "alternatives": [
+    "1232",
+    "6240"
+   ],
+   "searches": [
+    "matron|hostel|warden"
+   ],
+   "reason": "The index codes \"Matron\" and \"Matron, house\" to 6134 (Houseparents and residential wardens), and the role of running the residential side of a hostel fits that unit group's supervision of residents and dormitory operations."
+  },
+  {
+   "title": "Pharmaceutical engineer",
+   "want": "2125",
+   "got": "2125",
+   "confidence": 0.5,
+   "alternatives": [
+    "2129",
+    "3113"
+   ],
+   "searches": [
+    "pharmaceutical|pharma",
+    "engineer.*(process|production|chemical|manufactur)|(process|production|chemical|manufactur).*engineer"
+   ],
+   "reason": "\"Pharmaceutical engineer\" is not a direct index title, but engineers working on pharmaceutical manufacturing processes and plant fall under production and process engineering, as with the indexed \"Engineer, chemical\" and \"Engineer, process\" titles."
+  },
+  {
+   "title": "Animal nurse",
+   "want": "3240",
+   "got": "3240",
+   "confidence": 0.9,
+   "alternatives": [
+    "6129",
+    "2240"
+   ],
+   "searches": [],
+   "reason": "An animal nurse is the veterinary nursing role, which SOC 2020 unit group 3240 (Veterinary nurses) covers directly."
+  },
+  {
+   "title": "Royal navy officer",
+   "want": "1161",
+   "got": "1161",
+   "confidence": 0.9,
+   "alternatives": [
+    "3512",
+    "3311"
+   ],
+   "searches": [
+    "navy|naval|royal marines"
+   ],
+   "reason": "The index lists \"Officer, naval, Royal\" under 1161 Officers in armed forces, which matches a Royal Navy officer directly."
+  },
+  {
+   "title": "Telecommunications director",
+   "want": "1137",
+   "got": "1137",
+   "confidence": 0.5,
+   "alternatives": [
+    "2132",
+    "1139"
+   ],
+   "searches": [
+    "telecom|telecommunications"
+   ],
+   "reason": "A director-level head of telecommunications is most likely a senior technology leader, so Information technology directors fits best, though telecoms is not named in that unit group's title and the role could sit under a functional director heading instead."
+  },
+  {
+   "title": "Courier service owner",
+   "want": "1140",
+   "got": "1241",
+   "confidence": 0.45,
+   "alternatives": [
+    "1259",
+    "1140"
+   ],
+   "searches": [
+    "courier|delivery service"
+   ],
+   "reason": "A courier business owner runs a delivery and distribution operation, so the transport and distribution manager unit group fits best; the title gives no detail on whether the owner drives or runs the business day to day."
+  },
+  {
+   "title": "Market supervisor",
+   "want": "7132",
+   "got": "7132",
+   "confidence": 0.5,
+   "alternatives": [
+    "7124",
+    "1259"
+   ],
+   "searches": [
+    "market (supervisor|trader|stall)|supervisor.*market|market.*supervisor",
+    "market trader|street trader|market and street|stall"
+   ],
+   "reason": "A market supervisor directs stallholders and traders and oversees sales, takings and stall allocation, which matches the retail sales supervisor unit group; the title has no description, so the match is uncertain."
+  },
+  {
+   "title": "Seamless hand",
+   "want": "5419",
+   "got": "8112",
+   "confidence": 0.45,
+   "alternatives": [
+    "8146",
+    "5419"
+   ],
+   "searches": [
+    "seam",
+    "seamless|hosiery|linker",
+    "^hand,"
+   ],
+   "reason": "\"Hand, hosiery\" is indexed to 8112 (Textile process operatives), and \"seamless hand\" reads as a hand-finishing or linking worker on seamless knitwear, but the title is bare and I found no exact match for \"seamless hand\"."
+  },
+  {
+   "title": "Offshore installation manager",
+   "want": "1123",
+   "got": "1123",
+   "confidence": 0.85,
+   "alternatives": [
+    "1121",
+    "1139"
+   ],
+   "searches": [
+    "offshore"
+   ],
+   "reason": "The index lists \"Manager, installations, offshore\" under 1123, Production managers and directors in mining and energy, which matches an offshore installation manager's role in oil and gas production."
+  },
+  {
+   "title": "Retail merchandiser",
+   "want": "3553",
+   "got": "3553",
+   "confidence": 0.65,
+   "alternatives": [
+    "7125",
+    "9241"
+   ],
+   "searches": [
+    "merchandis"
+   ],
+   "reason": "The index maps \"Merchandiser\" and \"Merchandiser, sales\" directly to unit group 3553 (Merchandisers), which is the closest match for a retail merchandiser's role."
+  },
+  {
+   "title": "Sheet parer",
+   "want": "8139",
+   "got": "5412",
+   "confidence": 0.4,
+   "alternatives": [
+    "8113",
+    "8139"
+   ],
+   "searches": [
+    "pare|paring|parer|sheet",
+    "parer|paring"
+   ],
+   "reason": "The index lists \"Parer\" under 5412 (Footwear and leather working trades), and paring sheet leather to thickness is a leather-working task, but the job description is missing so the material is unconfirmed; the index also lists \"Parer\" under 8113, 8139 and 5419."
+  },
+  {
+   "title": "Audit examiner",
+   "want": "2421",
+   "got": "2421",
+   "confidence": 0.45,
+   "alternatives": [
+    "4122",
+    "8143"
+   ],
+   "searches": [
+    "audit",
+    "examiner"
+   ],
+   "reason": "\"Audit examiner\" most plausibly means a professional who examines accounts and financial records for compliance, which matches the chartered and certified accountants group (O*NET maps it to Accountants and Auditors and Financial Examiners); the title alone is ambiguous and could also mean a clerical or routine inspection role."
+  },
+  {
+   "title": "Insurance claims handler",
+   "want": "4132",
+   "got": "4132",
+   "confidence": 0.85,
+   "alternatives": [
+    "3541",
+    "3532"
+   ],
+   "searches": [
+    "claims? (handler|handling|examiner|assessor|adjuster)|handler, claims|insurance claim"
+   ],
+   "reason": "The index directly lists \"Handler, claims\" and \"Handler, claims, motor\" under 4132 Pensions and insurance clerks and assistants, which covers processing insurance claims."
+  },
+  {
+   "title": "Fork truck driver",
+   "want": "8222",
+   "got": "8222",
+   "confidence": 0.95,
+   "alternatives": [
+    "8229",
+    "8239"
+   ],
+   "searches": [
+    "fork|lift truck"
+   ],
+   "reason": "The index lists many direct matches for fork-lift truck driver/operator titles, all coded to unit group 8222 (Fork-lift truck drivers)."
+  },
+  {
+   "title": "Lunchtime assistant",
+   "want": "9232",
+   "got": "9232",
+   "confidence": 0.8,
+   "alternatives": [
+    "9263",
+    "6112"
+   ],
+   "searches": [
+    "lunch|midday"
+   ],
+   "reason": "The index maps lunchtime and midday assistant titles, including \"Assistant, lunchtime\" and \"Supervisor, lunchtime\", to 9232 School midday and crossing patrol occupations, which fits a lunchtime supervision role in schools."
+  },
+  {
+   "title": "Renderer",
+   "want": "5321",
+   "got": "5321",
+   "confidence": 0.5,
+   "alternatives": [
+    "8111",
+    "5322"
+   ],
+   "searches": [
+    "render",
+    "visuali|3d|cgi|plaster"
+   ],
+   "reason": "In construction, a renderer applies render (plaster coats) to external and internal walls, which falls under Plasterers; the index has no direct \"Renderer\" entry apart from a food-industry lard renderer, and the job description is not given."
+  },
+  {
+   "title": "Management services controller",
+   "want": "2431",
+   "got": null,
+   "confidence": 0.0,
+   "alternatives": [],
+   "searches": [
+    "management services|controller, management",
+    "controller",
+    "management (accountant|services|information)|services manager",
+    "management accountant|management services",
+    "services (controller|officer|supervisor)|controller, (services|management)"
+   ],
+   "reason": "No answer within the step limit."
+  },
+  {
+   "title": "Sales administration assistant",
+   "want": "4151",
+   "got": "4151",
+   "confidence": 0.92,
+   "alternatives": [
+    "4142",
+    "7219"
+   ],
+   "searches": [
+    "sales admin|administrator.*sales|sales.*administrat"
+   ],
+   "reason": "The index maps numerous sales administrator title variants (e.g. \"Administrator, sales\", \"Administrator, order, sales\") directly to unit group 4151 Sales administrators."
+  },
+  {
+   "title": "Portering supervisor",
+   "want": "9262",
+   "got": "6240",
+   "confidence": 0.5,
+   "alternatives": [
+    "9262",
+    "9261"
+   ],
+   "searches": [
+    "portering|porter",
+    "portering|supervisor, porter|porters",
+    "supervisor.*(hospital|portering|porter|ward|domestic)|(hospital|portering|domestic|ward).*supervisor"
+   ],
+   "reason": "A portering supervisor directs porters and in-house ancillary staff, which matches the supervisory duties of unit group 6240 (cleaning and housekeeping managers and supervisors), though the index has no exact \"portering supervisor\" entry."
+  },
+  {
+   "title": "Fish preparer",
+   "want": "5433",
+   "got": "5433",
+   "confidence": 0.7,
+   "alternatives": [
+    "8111",
+    "9139"
+   ],
+   "searches": [
+    "fish|poultry"
+   ],
+   "reason": "Preparing fish (gutting, filleting, cleaning, splitting) is the core task of the Fishmongers and poultry dressers unit group, and the index has many matching fish-preparation titles under it."
+  },
+  {
+   "title": "Agile coach",
+   "want": "2440",
+   "got": "2440",
+   "confidence": 0.4,
+   "alternatives": [
+    "2431",
+    "3574"
+   ],
+   "searches": [
+    "agile|scrum",
+    "coach"
+   ],
+   "reason": "Agile coaching is a delivery and project-method role, closest to the project management professionals group (the index maps \"Master, scrum\" there), though the title alone does not show whether the work is coaching teams (closer to a trainer or consultant) or running projects."
+  },
+  {
+   "title": "Textile designer",
+   "want": "3422",
+   "got": "3429",
+   "confidence": 0.6,
+   "alternatives": [
+    "3422",
+    "5419"
+   ],
+   "searches": [
+    "textile design|designer, textile",
+    "textile",
+    "designer"
+   ],
+   "reason": "The index has no \"textile designer\" entry; the closest match is \"Designer, cloth\" under Design occupations n.e.c. (3429), since textile/fabric design is not garment design."
+  },
+  {
+   "title": "Band f",
+   "want": "2439",
+   "got": "4111",
+   "confidence": 0.15,
+   "alternatives": [
+    "2439",
+    "3560"
+   ],
+   "searches": [
+    "^band f|band f\\b",
+    "band"
+   ],
+   "reason": "\"Band f\" is only a pay grade with no role information, and no index title matches it exactly; lettered civil-service-style bands in the index (A to D) are mostly coded to national government administrative occupations, so that is the closest guess, though the code is very uncertain."
+  },
+  {
+   "title": "Builder's machinist",
+   "want": "8131",
+   "got": "8131",
+   "confidence": 0.3,
+   "alternatives": [
+    "9129",
+    "8139"
+   ],
+   "searches": [
+    "machinist|builder's",
+    "builder",
+    "builders?'? ?(merchant|joiner|plant|machin)",
+    "machinist.*(wood|joinery|timber|saw)|(wood|joinery|timber|saw).*machinist"
+   ],
+   "reason": "The title is ambiguous, but \"machinist\" roles in the index that relate to building and timber work (e.g. Machinist, wood/timber/woodworking) sit under 8131 Paper and wood machine operatives, the closest fit for a machine operator making builders' wood products; no description was given to confirm this."
+  },
+  {
+   "title": "Taxation manager",
+   "want": "2423",
+   "got": "2423",
+   "confidence": 0.9,
+   "alternatives": [
+    "2431",
+    "2421"
+   ],
+   "searches": [
+    "tax"
+   ],
+   "reason": "The index lists \"Manager, tax\" directly under unit group 2423 (Taxation experts), and a taxation manager is a specialist tax professional rather than a general manager."
+  },
+  {
+   "title": "Tobacco planter",
+   "want": "5112",
+   "got": "5112",
+   "confidence": 0.6,
+   "alternatives": [
+    "5111",
+    "9111"
+   ],
+   "searches": [
+    "tobacco|planter"
+   ],
+   "reason": "The index codes tea, coffee and rubber planters to 5112 Horticultural trades, so a tobacco planter who grows and plants the crop most likely belongs there too."
+  },
+  {
+   "title": "Software support analyst",
+   "want": "3132",
+   "got": "3132",
+   "confidence": 0.5,
+   "alternatives": [
+    "2134",
+    "2136"
+   ],
+   "searches": [
+    "software support|support analyst|application support",
+    "support analyst|software|IT support"
+   ],
+   "reason": "\"Support analyst\" roles that answer user queries and resolve software problems match IT user support technicians (3132), which the index codes \"Analyst (IT support)\" to; the title is vague, and it could instead be a software development role under 2134."
+  },
+  {
+   "title": "Ground worker",
+   "want": "9121",
+   "got": "9121",
+   "confidence": 0.95,
+   "alternatives": [
+    "9129",
+    "8159"
+   ],
+   "searches": [
+    "ground ?worker|groundworker"
+   ],
+   "reason": "The index has \"Groundworker\" and \"Groundworkers\" directly mapped to unit group 9121 Groundworkers."
+  },
+  {
+   "title": "Finance officer",
+   "want": "4124",
+   "got": "4124",
+   "confidence": 0.8,
+   "alternatives": [
+    "1131",
+    "3533"
+   ],
+   "searches": [
+    "finance officer|officer, finance"
+   ],
+   "reason": "The index lists \"Finance officers\" directly under unit group 4124, and most \"Officer, finance\" variants (deputy, school, regional) map there; the title has no seniority marker that would point to a manager role."
+  },
+  {
+   "title": "Chef manager",
+   "want": "5434",
+   "got": "5434",
+   "confidence": 0.85,
+   "alternatives": [
+    "5436",
+    "1222"
+   ],
+   "searches": [
+    "chef|catering manager|catering and bar"
+   ],
+   "reason": "The index lists \"Chef-manager\" directly under unit group 5434 (Chefs), and the job is a chef role rather than a catering or bar manager role."
+  },
+  {
+   "title": "Market organiser",
+   "want": "7124",
+   "got": "3557",
+   "confidence": 0.4,
+   "alternatives": [
+    "7124",
+    "1251"
+   ],
+   "searches": [
+    "market",
+    "organi[sz]er"
+   ],
+   "reason": "\"Market organiser\" most plausibly means someone who plans and coordinates market events, stalls and trading days, which matches the events and exhibition organiser unit group; the title is ambiguous, so the job's actual duties would settle it."
+  },
+  {
+   "title": "Area engineer",
+   "want": "2124",
+   "got": "2123",
+   "confidence": 0.35,
+   "alternatives": [
+    "5249",
+    "2121",
+    "2129"
+   ],
+   "searches": [
+    "area engineer|engineer, area",
+    "engineer, (field|site|area|regional|network)"
+   ],
+   "reason": "The index has \"Engineer, area (technical)\" coded to Electrical engineers (2123), the only exact match for \"area engineer\", but the title alone is vague and area engineers in other sectors may be field or site engineers."
+  },
+  {
+   "title": "Learning coach",
+   "want": "2312",
+   "got": "6113",
+   "confidence": 0.5,
+   "alternatives": [
+    "3574",
+    "2319"
+   ],
+   "searches": [
+    "learning coach|learning mentor|coach, learning|learning support",
+    "coach"
+   ],
+   "reason": "The index has an exact match for \"Coach, learning (special/additional needs)\" under Educational support assistants (6113), but the bare title \"Learning coach\" with no description could also be a workplace trainer or a teaching role."
+  },
+  {
+   "title": "Telephone sales agent",
+   "want": "7113",
+   "got": "7113",
+   "confidence": 0.9,
+   "alternatives": [
+    "3556",
+    "7211"
+   ],
+   "searches": [
+    "telephone sales|sales agent"
+   ],
+   "reason": "The index maps \"Telephone salespersons\" and the telephone sales adviser and executive titles directly to unit group 7113, and a telephone sales agent fits that role rather than a manager or director."
+  },
+  {
+   "title": "Accredited checking technician",
+   "want": "3212",
+   "got": "3212",
+   "confidence": 0.55,
+   "alternatives": [
+    "7114",
+    "8143"
+   ],
+   "searches": [
+    "checking technician|accuracy check|accredited",
+    "check|inspect",
+    "pharmac|dispens"
+   ],
+   "reason": "An accredited checking technician in a pharmacy checks dispensed prescriptions for accuracy, which fits the pharmaceutical technician role (3212) that verifies prescriptions and handles dispensing tasks, though the title itself has no direct index match."
+  },
+  {
+   "title": "Automation test analyst",
+   "want": "2136",
+   "got": "2136",
+   "confidence": 0.85,
+   "alternatives": [
+    "2134",
+    "2139"
+   ],
+   "searches": [
+    "test analyst|software tester|test engineer|testing"
+   ],
+   "reason": "An automation test analyst designs and runs software test automation, which matches the IT quality and testing professionals unit group; the index also has \"Consultant, testing, software\" under 2136."
+  },
+  {
+   "title": "Impresario",
+   "want": "3413",
+   "got": "3416",
+   "confidence": 0.6,
+   "alternatives": [
+    "3557",
+    "1255"
+   ],
+   "searches": [
+    "impresario|producer, theatre|theatre producer"
+   ],
+   "reason": "An impresario organises and finances theatre, concert or arts productions, which matches the index entry \"Producer, theatre\" under Arts officers, producers and directors (3416)."
+  },
+  {
+   "title": "Radio electrician",
+   "want": "5243",
+   "got": "5243",
+   "confidence": 0.55,
+   "alternatives": [
+    "5241",
+    "5242"
+   ],
+   "searches": [
+    "radio|electrician"
+   ],
+   "reason": "A radio electrician installs, services and repairs radio equipment, which matches the core tasks of unit group 5243 (TV, video and audio servicers and repairers), where the index also lists radio fitters, testers and engineers."
+  },
+  {
+   "title": "Shunting engine driver",
+   "want": "8231",
+   "got": "8231",
+   "confidence": 0.7,
+   "alternatives": [
+    "8234",
+    "8239"
+   ],
+   "searches": [
+    "shunt|rail transport operative|train driver"
+   ],
+   "reason": "The index lists \"Driver, shunter\" under Train and tram drivers (8231), and a shunting engine driver operates a locomotive moving rail vehicles within a yard."
+  },
+  {
+   "title": "Photocopier engineer",
+   "want": "5246",
+   "got": "5246",
+   "confidence": 0.85,
+   "alternatives": [
+    "5244",
+    "9219"
+   ],
+   "searches": [
+    "photocop|copier|office equipment|reprographic"
+   ],
+   "reason": "The index lists \"Engineer, copier\" under 5246 (Electrical service and maintenance mechanics and repairers), which matches the photocopier engineer role of installing and repairing copier equipment."
+  },
+  {
+   "title": "Forgeman",
+   "want": "8115",
+   "got": "8115",
+   "confidence": 0.6,
+   "alternatives": [
+    "5212",
+    "5250"
+   ],
+   "searches": [
+    "forg"
+   ],
+   "reason": "A forgeman operates forge plant shaping heated metal, and the index codes forge operator, worker and hand titles to 8115 (metal making and treating process operatives). The title is vague, so a skilled forger (5212) is a plausible alternative."
+  },
+  {
+   "title": "Class teacher",
+   "want": "2314",
+   "got": "2314",
+   "confidence": 0.6,
+   "alternatives": [
+    "2313",
+    "2316"
+   ],
+   "searches": [
+    "class teacher|teacher, class",
+    "teacher.*primary|primary.*teacher"
+   ],
+   "reason": "\"Class teacher\" is most commonly a primary school teacher who teaches a class throughout the day, and the index lists \"Teacher, primary\" under 2314; the title alone doesn't say which phase, so secondary (2313) and special needs (2316) are plausible alternatives."
+  },
+  {
+   "title": "Family support worker",
+   "want": "3221",
+   "got": "3221",
+   "confidence": 0.6,
+   "alternatives": [
+    "2469",
+    "3222"
+   ],
+   "searches": [
+    "family support|support worker, family|family worker",
+    "family|support worker"
+   ],
+   "reason": "The index places many family-focused support and outreach worker titles (e.g. \"Worker, family and children\", \"Coordinator, support, family\", \"Practitioner, support, family\") under 3221 Youth and community workers, and \"family support\" with no further detail fits that group best."
+  },
+  {
+   "title": "Meteorological technician",
+   "want": "3119",
+   "got": "3119",
+   "confidence": 0.45,
+   "alternatives": [
+    "2114"
+   ],
+   "searches": [
+    "meteorolog",
+    "weather|observer, met|technician, (science|scientific)"
+   ],
+   "reason": "\"Technician\" is a mid-level science technician role with no direct index match, so it falls under 3119 (science technicians n.e.c.); the index codes the many meteorological titles (assistant, officer, forecaster) to 2114 physical scientists, which is the main alternative."
+  },
+  {
+   "title": "Ambulance attendant",
+   "want": "6132",
+   "got": "6132",
+   "confidence": 0.85,
+   "alternatives": [
+    "2255",
+    "6131"
+   ],
+   "searches": [],
+   "reason": "Ambulance attendants who support patient care and transport without paramedic qualifications fall under \"Ambulance staff (excluding paramedics)\"."
+  },
+  {
+   "title": "Repeater officer",
+   "want": "5242",
+   "got": "7213",
+   "confidence": 0.4,
+   "alternatives": [
+    "5243",
+    "5242"
+   ],
+   "searches": [
+    "repeater",
+    "repeater|relay|transmitter|radio operator",
+    "radio|telecom",
+    "repeater station|station officer|officer, (telecom|radio|signal)"
+   ],
+   "reason": "No index title matches \"repeater\" directly; the closest matches are \"Officer, radio\" and \"Officer, telecommunications\" entries, which the index codes to communication operators (7213), though a repeater-station role could instead be a radio or telecoms engineer."
+  },
+  {
+   "title": "Security engineer",
+   "want": "5245",
+   "got": "2135",
+   "confidence": 0.85,
+   "alternatives": [
+    "2137",
+    "2133"
+   ],
+   "searches": [
+    "security engineer|engineer, security"
+   ],
+   "reason": "The index maps all \"Engineer, security\" titles (cyber, network, computing/IT) to unit group 2135 Cyber security professionals."
+  },
+  {
+   "title": "Recruitment adviser",
+   "want": "3571",
+   "got": "3571",
+   "confidence": 0.72,
+   "alternatives": [
+    "4136",
+    "1136"
+   ],
+   "searches": [
+    "recruit"
+   ],
+   "reason": "The index codes \"Recruiter\", \"Consultant, recruitment\", \"Officer, recruitment\" and similar titles predominantly to 3571 (HR and industrial relations officers), and the title gives no seniority signal pointing to a manager role (1136) or admin role (4136)."
+  },
+  {
+   "title": "Dental surgeon's assistant",
+   "want": "6133",
+   "got": "6133",
+   "confidence": 0.85,
+   "alternatives": [
+    "3213",
+    "6136"
+   ],
+   "searches": [
+    "dental"
+   ],
+   "reason": "The index maps \"Assistant, dental\" and \"Assistant, surgery, dental\" to Dental nurses (6133), which covers chairside dental surgery assistants."
+  },
+  {
+   "title": "Company officer",
+   "want": "1163",
+   "got": "3313",
+   "confidence": 0.3,
+   "alternatives": [
+    "1163",
+    "1131"
+   ],
+   "searches": [
+    "company officer|officer, company|company secretary|secretary, company",
+    "officer.*(corporate|company)|(corporate|company).*officer",
+    "fire.*officer|officer.*fire"
+   ],
+   "reason": "\"Company officer\" is most likely a UK fire service rank (watch or crew manager level, below senior officer), which falls under fire service officers (watch manager and below); the title alone is ambiguous, and it could instead mean a company secretary or company director."
+  },
+  {
+   "title": "Break-off fitter",
+   "want": "5223",
+   "got": "8120",
+   "confidence": 0.3,
+   "alternatives": [
+    "8139",
+    "5441",
+    "5223"
+   ],
+   "searches": [
+    "break-?off|fitter",
+    "break-?off|breakoff|break off",
+    "break"
+   ],
+   "reason": "The index lists \"Breaker-off\" as an exact title under 8120 (metal working machine operatives), 5441 (glass and ceramics) and 8139 (plant and machine operatives n.e.c.), and no title says \"break-off fitter\"; 8120 is the best fit for a metal-working break-off role, but the \"fitter\" wording and the missing task detail leave the choice uncertain."
+  },
+  {
+   "title": "Proposals manager",
+   "want": "2455",
+   "got": "3556",
+   "confidence": 0.4,
+   "alternatives": [
+    "2129",
+    "1139"
+   ],
+   "searches": [
+    "proposal|bid manager|tender",
+    "proposals? |bids? |manager, (sales|business development)",
+    "business development|capture|bid"
+   ],
+   "reason": "The index places \"Manager, bid\" in 3556 (sales accounts and business development managers), and writing and managing commercial proposals to win business fits that group best. The title alone doesn't show the sector, so this is uncertain."
+  },
+  {
+   "title": "Safety attendant",
+   "want": "3582",
+   "got": null,
+   "confidence": 0.0,
+   "alternatives": [],
+   "searches": [
+    "safety attendant|attendant, safety|safety assistant|safety officer",
+    "attendant",
+    "safety.*(ride|pool|leisure|park)|(ride|pool|leisure|park).*safety",
+    "lifeguard|ride operator",
+    "safety"
+   ],
+   "reason": "No answer within the step limit."
+  },
+  {
+   "title": "Sub postmaster",
+   "want": "4123",
+   "got": "4123",
+   "confidence": 0.8,
+   "alternatives": [
+    "7111",
+    "1259"
+   ],
+   "searches": [
+    "postmaster|postmistress|post office"
+   ],
+   "reason": "The ONS index lists \"Sub-postmaster\" and \"Postmaster\" directly under unit group 4123 (Bank and post office clerks), so that is the direct match."
+  },
+  {
+   "title": "Consultant ophthalmologist",
+   "want": "2252",
+   "got": "2212",
+   "confidence": 0.9,
+   "alternatives": [
+    "2211",
+    "2229"
+   ],
+   "searches": [],
+   "reason": "A consultant ophthalmologist is a hospital-based specialist doctor, which falls under Specialist medical practitioners (2212) rather than the generalist code 2211."
+  },
+  {
+   "title": "Investment manager",
+   "want": "3534",
+   "got": "3534",
+   "confidence": 0.5,
+   "alternatives": [
+    "1131",
+    "2422"
+   ],
+   "searches": [
+    "investment",
+    "manager.*invest|invest.*manager|fund manager|portfolio manager"
+   ],
+   "reason": "The index places \"Manager, portfolio (investments)\" in 3534 Financial accounts managers, and its task profile (developing fund investment policies, managing investment funds) fits an investment manager; the title alone is vague, so seniority and whether the role is a director-level post are unknown."
+  },
+  {
+   "title": "Retoucher",
+   "want": "5423",
+   "got": "5423",
+   "confidence": 0.8,
+   "alternatives": [
+    "3417",
+    "3421"
+   ],
+   "searches": [
+    "retouch"
+   ],
+   "reason": "The ONS index lists \"Retoucher, colour\", \"Retoucher, photolitho\" and \"Retoucher, photographic\" all under unit group 5423 (Print finishing and binding workers), so a bare \"Retoucher\" most likely maps there too."
+  },
+  {
+   "title": "Time and motion analyst",
+   "want": "3544",
+   "got": "3549",
+   "confidence": 0.6,
+   "alternatives": [
+    "3544",
+    "2431"
+   ],
+   "searches": [
+    "motion|time and method|work study|method study"
+   ],
+   "reason": "The index has \"Assessor (work, time and motion)\" and \"Officer, technical (work study)\" both under 3549 (Business associate professionals n.e.c.), which matches the time and motion analyst role; the closest alternative is \"Analyst (work study)\" under 3544."
+  },
+  {
+   "title": "Medical laboratory science officer",
+   "want": "2113",
+   "got": "2113",
+   "confidence": 0.6,
+   "alternatives": [
+    "3111",
+    "3213"
+   ],
+   "searches": [
+    "laboratory|biomedical",
+    "medical laboratory|laboratory scien"
+   ],
+   "reason": "\"Medical laboratory scientific officer\" is the traditional NHS title for a biomedical scientist, who analyses clinical specimens and is graduate-level, which fits unit group 2113 better than the technician group 3111; the exact title is not in the index, so this relies on that inference."
+  },
+  {
+   "title": "Fork lift trainer",
+   "want": "8215",
+   "got": "3574",
+   "confidence": 0.65,
+   "alternatives": [
+    "8222",
+    "8215"
+   ],
+   "searches": [
+    "fork|trainer|instructor"
+   ],
+   "reason": "A fork lift trainer instructs others in an industrial skill, which fits \"Other vocational and industrial trainers\" (the index lists several \"Trainer, staff\"-type titles there), rather than the driving role itself."
+  },
+  {
+   "title": "Electronic instrument mechanic",
+   "want": "5249",
+   "got": "5224",
+   "confidence": 0.8,
+   "alternatives": [
+    "5249",
+    "3112"
+   ],
+   "searches": [
+    "instrument (mechanic|technician|fitter|repairer)|instrument mechanic",
+    "instrument"
+   ],
+   "reason": "The index places \"Mechanic, instrument\", \"Repairer (instruments)\" and \"Fitter, instrument\" under 5224 Precision instrument makers and repairers, which is the closest match for an electronic instrument mechanic."
+  },
+  {
+   "title": "Ceramics consultant",
+   "want": "2129",
+   "got": "3429",
+   "confidence": 0.3,
+   "alternatives": [
+    "2125",
+    "5441"
+   ],
+   "searches": [
+    "ceramic|pottery|potter",
+    "consultant, (technical|engineering|product|materials|design)"
+   ],
+   "reason": "The title gives no detail on the work; the index codes ceramic designers to 3429 and \"Consultant, design\" to 3429, but a ceramics consultant could also be a technical or process specialist (2125/2129) or a practising ceramicist (5441)."
+  },
+  {
+   "title": "Mental health nurse",
+   "want": "2235",
+   "got": "2235",
+   "confidence": 0.93,
+   "alternatives": [
+    "2237",
+    "2233"
+   ],
+   "searches": [],
+   "reason": "The job title names the specialism directly: \"Mental health nurse\" matches unit group 2235 (Mental health nurses) under the registered nursing professionals."
+  },
+  {
+   "title": "Burner fitter",
+   "want": "5315",
+   "got": "5223",
+   "confidence": 0.5,
+   "alternatives": [
+    "5315",
+    "5214"
+   ],
+   "searches": [
+    "burner",
+    "fitter, burner|burner fitter|fitter.*burner",
+    "gas fitter|fitter, gas|fitter.*(boiler|furnace)"
+   ],
+   "reason": "No \"burner fitter\" title exists in the index; the closest analogues are the boiler and furnace fitter titles, which sit in metal working production and maintenance fitters (5223), the mechanical fitting and maintenance trade for industrial plant."
+  },
+  {
+   "title": "Field supervisor",
+   "want": "7220",
+   "got": "5330",
+   "confidence": 0.2,
+   "alternatives": [],
+   "searches": [
+    "supervisor.*field|field.*supervisor",
+    "field",
+    "supervisor"
+   ],
+   "reason": "The title alone does not say which field is meant; \"field supervisor\" most often denotes a site or outdoor crew supervisor, which the index places in construction and building trades supervisors, but the index has no exact \"field supervisor\" entry, so this is low confidence."
+  },
+  {
+   "title": "Exporter",
+   "want": "3542",
+   "got": "3542",
+   "confidence": 0.8,
+   "alternatives": [
+    "3556",
+    "3552"
+   ],
+   "searches": [
+    "export"
+   ],
+   "reason": "The index lists many export-related titles under \"Importers and exporters\" (3542), and the bare title \"Exporter\" matches that unit group directly, with no description suggesting a sales, clerical, or director role."
+  },
+  {
+   "title": "Spray polisher",
+   "want": "5233",
+   "got": "5233",
+   "confidence": 0.4,
+   "alternatives": [
+    "5442",
+    "5441"
+   ],
+   "searches": [
+    "spray|polisher",
+    "polisher, spray|spray polish|polisher.*spray"
+   ],
+   "reason": "A spray polisher applies lacquer or finish with spray guns and polishes the result, which best matches vehicle paint technicians (5233); the title is ambiguous across industries, so it could also be a furniture or metal finisher."
+  },
+  {
+   "title": "Section inspector",
+   "want": "9129",
+   "got": "8143",
+   "confidence": 0.4,
+   "alternatives": [
+    "3581",
+    "8160"
+   ],
+   "searches": [
+    "inspector",
+    "section inspector|inspector, section|section.*inspector"
+   ],
+   "reason": "\"Section inspector\" with no further detail most likely means a hands-on inspector checking products or work on a production line, which fits Routine inspectors and testers; the title is ambiguous and could instead be a regulatory or supervisory role."
+  },
+  {
+   "title": "Iron moulder",
+   "want": "5212",
+   "got": "5212",
+   "confidence": 0.85,
+   "alternatives": [
+    "8115",
+    "8119"
+   ],
+   "searches": [
+    "moulder"
+   ],
+   "reason": "An iron moulder makes sand or core moulds for metal castings, and the index places \"Moulder, sand\", \"Moulder, core\" and \"Moulder, hand\" in unit group 5212 (metal plate workers, smiths, moulders), a skilled craft role."
+  },
+  {
+   "title": "Accommodation manager",
+   "want": "1221",
+   "got": "1221",
+   "confidence": 0.6,
+   "alternatives": [
+    "1251",
+    "6134"
+   ],
+   "searches": [
+    "accommodation"
+   ],
+   "reason": "The ONS index maps \"Manager, accommodations\" to 1221 (Hotel and accommodation managers and proprietors), and the title's wording fits that unit group most directly."
+  },
+  {
+   "title": "Housing development officer",
+   "want": "3223",
+   "got": "3223",
+   "confidence": 0.45,
+   "alternatives": [
+    "3229",
+    "1251"
+   ],
+   "searches": [
+    "housing",
+    "development officer|officer, development"
+   ],
+   "reason": "\"Housing officer\" titles are indexed to 3223 Housing officers, and the job appears to be a housing-sector officer role rather than a manager; the title lacks detail on whether the work is tenancy-facing or new-build development."
+  },
+  {
+   "title": "Flats steward",
+   "want": "6231",
+   "got": "6232",
+   "confidence": 0.55,
+   "alternatives": [
+    "6135",
+    "1251"
+   ],
+   "searches": [
+    "steward|caretaker|block",
+    "flat|concierge|estate"
+   ],
+   "reason": "A flats steward (a block or estate caretaker in housing) mainly cleans and maintains communal areas, gathers rubbish and services facilities, which matches the Caretakers unit group. The title alone is ambiguous, and the role could be read as sheltered-housing support (care) or as property management."
+  },
+  {
+   "title": "Residential worker",
+   "want": "6135",
+   "got": "6135",
+   "confidence": 0.5,
+   "alternatives": [
+    "6134",
+    "6136"
+   ],
+   "searches": [
+    "residential"
+   ],
+   "reason": "\"Residential worker\" in a care setting most often maps to care workers (6135), the most common residential-care titles in the index, though the bare title is ambiguous between care, houseparent and senior care roles."
+  },
+  {
+   "title": "After school assistant",
+   "want": "6117",
+   "got": "6117",
+   "confidence": 0.7,
+   "alternatives": [
+    "6111",
+    "6113"
+   ],
+   "searches": [
+    "after school|after-school|out of school|breakfast club"
+   ],
+   "reason": "The index has \"Assistant, club, out of school\" coded to Playworkers (6117), which matches an after school assistant working with children outside school hours."
+  }
+ ]
+}

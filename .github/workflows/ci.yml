@@ -12,3 +12,26 @@ jobs:
         run: |
           uv run python pipeline/build_data.py
           git diff --exit-code scanner/data
+
+  image:
+    runs-on: ubuntu-24.04-arm # Lambda runs arm64
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build -t opportunity-scanner .
+      - name: container serves the page, API and MCP
+        run: |
+          docker run -d -p 8080:8080 opportunity-scanner
+          for i in $(seq 20); do curl -fs localhost:8080/api/meta >/dev/null && break; sleep 1; done
+          curl -fsS -X POST localhost:8080/mcp -H "Accept: application/json, text/event-stream" \
+            -H "Content-Type: application/json" -H "MCP-Protocol-Version: 2025-06-18" \
+            -d '{"jsonrpc":"2.0","id":1,"method":"tools/list"}' | grep -q grep_titles
+
+  terraform:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+        with: { terraform_version: "1.17.0" }
+      - run: terraform fmt -check -recursive infra
+      - run: cd infra && terraform init -backend=false && terraform validate
+      - run: cd infra/bootstrap && terraform init -backend=false && terraform validate
