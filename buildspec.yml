@@ -29,7 +29,7 @@ phases:
         if aws ecr describe-images --repository-name opportunity-scanner --image-ids imageTag="${COMMIT}" >/dev/null 2>&1; then
           echo "image ${COMMIT} already pushed"
         else
-          docker build -t "${IMAGE}" . && docker push "${IMAGE}"
+          docker build --provenance=false -t "${IMAGE}" . && docker push "${IMAGE}" # Lambda rejects image indexes with attestations
         fi
       - cd infra
       - terraform init -input=false -backend-config="bucket=opportunity-scanner-tfstate-${ACCOUNT}"

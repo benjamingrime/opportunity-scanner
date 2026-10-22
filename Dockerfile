@@ -1,5 +1,6 @@
 # One image for a laptop, Lambda (via the Lambda Web Adapter) and Kubernetes.
-#   docker build -t opportunity-scanner . && docker run -p 8080:8080 opportunity-scanner
+#   docker build --provenance=false -t opportunity-scanner . && docker run -p 8080:8080 opportunity-scanner
+#   (--provenance=false: Lambda rejects image indexes with attestations)
 FROM python:3.13-slim AS build
 COPY --from=ghcr.io/astral-sh/uv:0.10.9 /uv /bin/uv
 WORKDIR /app
