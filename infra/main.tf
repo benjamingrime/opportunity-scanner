@@ -183,6 +183,8 @@ resource "aws_lambda_function" "app" {
       SCANNER_BUCKET       = aws_s3_bucket.data.bucket
       SCANNER_USAGE_TABLE  = aws_dynamodb_table.usage.name
       SCANNER_RUNS_PER_DAY = tostring(var.runs_per_day)
+      SCANNER_MAX_ROLES    = tostring(var.max_roles)
+      AWS_LWA_INVOKE_MODE  = "response_stream" # the page shows the agent's steps as they happen
     }
   }
 }
@@ -192,6 +194,7 @@ resource "aws_lambda_function" "app" {
 resource "aws_lambda_function_url" "app" {
   function_name      = aws_lambda_function.app.function_name
   authorization_type = "NONE"
+  invoke_mode        = "RESPONSE_STREAM"
 }
 
 # a public Function URL needs both permissions: InvokeFunctionUrl alone returns 403

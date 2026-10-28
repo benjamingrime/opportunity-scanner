@@ -29,3 +29,9 @@ variable "runs_per_day" {
   type    = number
   default = 200
 }
+
+variable "max_roles" {
+  description = "Roles read from one uploaded CSV: with runs_per_day, bounds a day's LLM spend"
+  type        = number
+  default     = 60
+}

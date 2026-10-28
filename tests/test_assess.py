@@ -103,3 +103,17 @@ def test_api_assessment_round_trip(client, model, monkeypatch):
     answer = c.post("/api/ask", json={"question": "Which of our roles has the largest share of buy-and-train work?",
                                       "assessment": r["id"]}).json()
     assert answer["answer"] and answer["unsupported"] == []
+
+
+def test_api_assessment_streams_the_agent_at_work(client, model, monkeypatch):
+    import json
+    monkeypatch.setattr(llm, "chat_model", lambda *a, **k: model)
+    r = client.post("/api/assess/stream", json={"csv": (HERE / "fixtures" / "roles.csv").read_text()},
+                    headers={"Origin": "https://www.stablefuture.uk"})
+    assert r.headers["access-control-allow-origin"] == "https://www.stablefuture.uk"
+    events = [json.loads(line) for line in r.text.splitlines()]
+    kinds = [e["event"] for e in events]
+    assert kinds[0] == "roles" and len(events[0]["roles"]) == 8
+    assert kinds.count("mapped") == 8 and "step" in kinds
+    assert all(e["pattern"] for e in events if e["event"] == "step" and e["kind"] == "search")
+    assert kinds[-1] == "status" and events[-1]["status"] == "needs_review"

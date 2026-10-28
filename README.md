@@ -12,7 +12,7 @@ Pick your industry and headcount. The scanner starts from the typical mix of rol
 
 It then ranks roles by how much staff time goes on buy-and-train and build tasks, and lists each role's tasks under each heading with estimated hours a week.
 
-Or upload your own roles: an agent maps each job title to a UK occupation, pausing to ask you when it isn't sure, then scans them. You can ask questions about the results, and any MCP client (Claude, ChatGPT, Cursor) can use the same tools.
+Or upload your own roles at [stablefuture.uk/opportunity](https://www.stablefuture.uk/opportunity): an agent maps each job title to a UK occupation, showing each search as it goes and pausing to ask you when it isn't sure, then scans them. You can ask questions about the results, and any MCP client (Claude, ChatGPT, Cursor) can use the same tools.
 
 It is a starting point for a conversation, not a forecast: it says where staff time goes and where to look, not how much time or money you'll save.
 
@@ -68,6 +68,8 @@ Tools (`scanner/tools.py`) are plain read-only functions shared by the workflow,
 2. `map_role`, once per role, in parallel: the LLM sees all 412 SOC 2020 unit groups (cached), searches the ONS job-title index with `grep_titles` as often as it needs (index titles are written back to front: "Officer, personnel"), reads close candidates with `get_role`, and submits a code with its confidence and up to 3 alternatives.
 3. `review`: if any role is below 0.7 confidence, the run pauses (a LangGraph interrupt) and a person picks from the candidates. Paused runs are checkpointed, so a review can come hours later.
 4. `score`: code only, the scan above.
+
+`POST /api/assess/stream` runs the same workflow and sends newline-delimited JSON as it goes (each role parsed, each search and read, each mapping), which is how the page shows the agent working. On Lambda this needs response streaming (`invoke_mode = "RESPONSE_STREAM"`). A public run reads at most 60 roles (`SCANNER_MAX_ROLES`).
 
 **Questions agent** (`scanner/ask.py`): the LLM calls tools in a loop (at most 8 calls) until it can answer. A faithfulness check then requires every number in the answer to come from a tool result or the question; if one doesn't, the agent gets one chance to correct it. It won't advise on whom to dismiss.
 

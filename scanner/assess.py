@@ -13,6 +13,7 @@ A LangGraph graph. Code sets the order; the LLM does only the steps that need ju
 import csv
 import io
 import json
+import os
 import re
 import sys
 import uuid
@@ -20,6 +21,7 @@ from operator import add
 from typing import Annotated, TypedDict
 
 from langchain_core.messages import HumanMessage, SystemMessage, ToolMessage
+from langgraph.config import get_stream_writer
 from langgraph.graph import END, START, StateGraph
 from langgraph.types import Command, Send, interrupt
 from pydantic import BaseModel, Field
@@ -28,7 +30,7 @@ from scanner import core, llm, tools
 
 MIN_CONFIDENCE = 0.7     # below this, a person chooses
 MAX_STEPS = 6            # model turns per role
-MAX_ROLES = 500
+MAX_ROLES = int(os.environ.get("SCANNER_MAX_ROLES", "500"))
 MAX_TEXT = 20_000        # characters of job description or role description
 
 TITLE_COLUMNS = ("title", "job title", "role", "job", "position")
@@ -188,9 +190,10 @@ def run_tool(call, hidden):
     raise KeyError(f"unknown tool {call['name']!r}")
 
 
-def map_one(role, model=None, hidden=frozenset(), spec=None):
+def map_one(role, model=None, hidden=frozenset(), spec=None, emit=lambda event: None):
     """Map one role. Returns a Mapping; soc is None if the model never gave a valid answer.
-    model: a chat model, or a scanner.replay.Replay in tests; by default the one SCANNER_LLM names."""
+    model: a chat model, or a scanner.replay.Replay in tests; by default the one SCANNER_LLM names.
+    emit: called with each search and read as it happens, so a page can show the agent working."""
     model = (model or llm.chat_model(spec)).bind_tools(TOOLS)
     occ = core.occupations()
     messages = [llm.system(system_prompt(), spec), HumanMessage(describe(role))]
@@ -219,6 +222,11 @@ def map_one(role, model=None, hidden=frozenset(), spec=None):
                     out = run_tool(call, hidden)
                 except (KeyError, ValueError) as e:
                     out = {"error": str(e)}
+                if call["name"] == "grep_titles" and "total" in out:
+                    emit({"kind": "search", "pattern": searches[-1], "total": out["total"],
+                          "top": out["by_role"][:3]})
+                elif call["name"] == "get_role" and "title" in out:
+                    emit({"kind": "read", "soc": out["soc"], "title": out["title"]})
             messages.append(ToolMessage(json.dumps(out), tool_call_id=call["id"]))
     return {"id": role["id"], "soc": None, "confidence": 0.0, "reason": "No answer within the step limit.",
             "alternatives": [], "searches": searches}
@@ -230,8 +238,10 @@ def fan_out(state: State):
 
 def map_role(state: dict, config):
     c = config.get("configurable", {})
+    write, role_id = get_stream_writer(), state["role"]["id"]
     return {"mappings": [map_one(state["role"], model=c.get("model"),
-                                 hidden=frozenset(c.get("hidden_titles", ())))]}
+                                 hidden=frozenset(c.get("hidden_titles", ())),
+                                 emit=lambda e: write({"role": role_id, **e}))]}
 
 
 # --- review and score ---------------------------------------------------------------------

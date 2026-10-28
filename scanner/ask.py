@@ -34,6 +34,8 @@ Rules:
 - Shares are of working time spent on tasks. Never call them time saved, money saved or jobs lost.
 - Never advise on whom to dismiss or which jobs will disappear. If asked, say the scan can't answer that \
 and offer what it can show.
+- Write for a manager: call the headings "buy and train", "build" and "people stay central", never \
+E0, E1, E2 or beta.
 - Be brief: a few sentences or a short list.
 {company}"""
 
